@@ -1,0 +1,1294 @@
+2002-03-28  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* X-Symbol 3.4.2.
+
+2002-03-28  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* lisp/x-symbol.el (x-symbol-encode-all): Would signal error
+	during encoding when executables are enabled.
+
+2002-03-21  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* X-Symbol 3.4.1.
+
+2002-03-21  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* lisp/x-symbol-hooks.el: Corrected and better "locale" handling.
+	(x-symbol-coding-system-from-locale): Do not signal error, if no
+	code_set_name is listed.  Use "locale -ck code_set_name charmap".
+	From Gerard Zwaan <wsinswan@win.tue.nl>.
+	(x-symbol-coding-system-from-locale): Recognize more names.
+
+2002-03-12  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* X-Symbol 3.4, pkg-3.40 is released.
+	Synchronize package version with author version.
+
+2002-03-09  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* Makefile: Exclude web pages from source distribution.
+
+	* man/Makefile: Make HTML output nicer.
+	(TEXI2HTML): Use new files below.
+	(html, index.html): New name for top manual file in HTML format.
+	(pdf, x-symbol.pdf): New targets.
+	(TEXI2DVI): Add option for A4 format.
+
+	* man/x-symbol.init: New file.
+
+	* man/x-symbol.css: New file.
+
+2002-03-02  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* lisp/x-symbol-hooks.el (x-symbol): Moved to SourceForge.net.
+
+	* lisp/x-symbol-vars.el (x-symbol-maintainer-address): Change.
+	(x-symbol-package-url): Change.
+
+	* lisp/x-symbol.el: Using ediff or writing a remote file via
+	ange-ftp would not work, remote files via efs was working.
+	Reported by Stephen Eglen <eglen@pcg.wustl.edu>.
+	(x-symbol-encode-all): Consider kludgy feature of `write-region'.
+
+2002-02-23  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-mule.el: Test for feature mule at load/eval time.
+
+	* lisp/x-symbol-hooks.el (x-symbol-orig-comint-input-sender): 
+	Change name from `x-symbol-orig-compint-input-sender'.
+	(x-symbol-comint-send): Change accordingly.
+	(x-symbol-after-init): Ditto.
+
+	* man/x-symbol.texi (FAQ Strange Chars): Include problem with
+	Mathematica's fonts which pretend to be adobe-fontspecific.
+	Reported by Arshak Petrosyan <arshak@mail.ma.utexas.edu>.
+
+	* man/x-symbol.texi (Default Coding): Minor change.
+
+	* lisp/x-symbol-hooks.el: Automatically deduce default coding.
+	(x-symbol-coding-system-from-locale): New function.
+	(x-symbol-default-coding): Use it for default value.
+
+2002-01-30  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3i, pkg-1.15.
+
+2002-01-09  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol.el: `write-region' would save whole buffer.
+	Reported by David Kastrup <David.Kastrup@t-online.de>.
+	(x-symbol-encode-all): New arguments START and END.
+
+	* lisp/x-symbol-hooks.el (x-symbol-write-region-annotate-function):
+	Use arguments START and END when calling it.
+
+	* man/x-symbol.texi (No Encoding): New section.
+	(Miscellaneous Packages): Mention desktop and session.
+
+2001-12-17  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3h, pkg-1.14.
+
+2001-12-09  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* fonts/xsymb1_12.bdf, fonts/xsymb1_14.bdf: New characters zero1
+	to nine1, used for token language "Isabelle Symbol".  They will
+	not appear in the default Grid & Menu!
+	From Markus Wenzel <wenzelm@informatik.tu-muenchen.de>.
+
+	* lisp/x-symbol.el (x-symbol-xsymb1-table): New characters zero1
+	to nine1 used for token language "Isabelle Symbol".
+	Suggested by Markus Wenzel <wenzelm@informatik.tu-muenchen.de>.
+	
+	* lisp/x-symbol-vars.el (x-symbol-charsym-ascii-groups): Add
+	group symbol digit1 for new characters zero1 to nine1.
+	(x-symbol-group-input-alist): Ditto.
+	(x-symbol-group-syntax-alist): Ditto.
+
+	* lisp/x-symbol-mule.el (x-symbol-mule-init-charsym-syntax): Would
+	only set buffer-local syntax of character.
+	Suggested by Stefan Monnier <monnier+gnu/emacs@rum.cs.yale.edu>.
+
+	* lisp/x-symbol-hooks.el: Better support for other packages.
+	(x-symbol-initialize): Define `x-symbol-nomule-fontify-cstrings'
+	as `ignore' for RefTeX before it is really used.
+	(x-symbol-inherit-from-buffer): Define here, make PARENT optional.
+	(x-symbol-initialize): Use it also for `TeX-region-hook'.
+	(x-symbol-auctex-math-insert): New function.
+	(x-symbol-initialize): Use it instead `x-symbol-tex-math-insert'.
+	(x-symbol-turn-on-bib-cite): New function.
+	(x-symbol-after-init): Use it instead anonymous function.
+
+	* lisp/x-symbol.el (x-symbol-inherit-from-buffer): Delete here.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-math-insert): Deletia.
+	(x-symbol-tex-init-auctex-region): Deletia.
+
+	* Makefile (binaries): Use $PACKAGEDIR.
+	(PACKAGEDIR): Changed to ~/.xemacs/xemacs-packages.
+	(CONFIGURATION): Changed.  Is just used for target binaries.
+	(BUILD_MULE): Changed from `old' to `t'.
+	(DATA_1_FILES): Also include fonts/nilxs.bdf for beta version.
+
+	* fonts/Makefile (EXTRABDFS): New variable.
+	(PCFS): Use it to produce nilxs.pcf from nilxs.bdf.
+
+	* fonts/nilxs.bdf: New file, from beta version.
+
+	* man/x-symbol.texi (Installation): With XEmacs-21.4.X, the user
+	package directory is now ~/.xemacs/packages instead of ~/.xemacs.
+	Reported by Alexander Russell <acr@cse.uconn.edu>.
+	(Input Method Electric): Example how to disable this input method
+	for all accented characters instead of less useful example.
+	(Miscellaneous Packages): Delete entry for package noweb.
+	(Bug Reports): Provide rationale for most points to follow.
+
+2001-09-04  Ryurick M. Hristev  <physrmh@phys.canterbury.ac.nz>
+	
+	* x-symbol.spec: New file for building an RPM package.  Only in
+	source distribution.
+
+	* x-symbol.patch: Ditto.
+
+2001-08-11  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-image.el (x-symbol-image-convert-file): Make sure
+	to convert just the first part of a multi-part image.  Would
+	produce either numbered files like xxx.png.0, xxx.png.1, etc or
+	unnecessary large files like xxx.gif for multi-page ps files.
+	Reported by Marco Zunino <zunino.mz@tin.it>.
+
+	* lisp/x-symbol-hooks.el (turn-on-x-symbol-conditionally): Don't
+	call `x-symbol-mode' if `x-symbol-mode' is buffer-local and nil.
+	Would sometimes unnecessarily load file "x-symbol".
+
+	* lisp/x-symbol-mule.el: Don't make compilation break without Mule.
+	(x-symbol-mule-default-charset): Better default value.
+
+2001-07-24  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3g, pkg-1.13.
+
+2001-07-24  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-vars.el (x-symbol-image-converter): In newer
+	releases of ImageMagick, recognized image formats are listed by
+	"convert -list Format".  Be more detailed in warnings.
+	Reported by Ekkehard Koehler <ekoehler@math.TU-Berlin.DE>.
+
+2001-06-28  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol.el (x-symbol-xsymb1-table): Would not define
+	correct syntax for cataleft/cataright, i.e., C-M-f / C-M-b won't
+	work as expected.  This fails on XEmacs/noMule anyway.
+
+2001-06-19  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3f, pkg-1.12.
+
+2001-06-17  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-xmas21.el (x-symbol-xmas-warn-about-core): New
+	variable.  Issue warning when running on XEmacs-21.0 to
+	XEmacs-21.1.8.
+
+	* lisp/x-symbol-vars.el: Input method token would sometimes fail
+	to work when using package completion.
+	Reported by Roland Zumkeller <Roland.Zumkeller@web.de>.
+	(completion-separator-self-insert-command): Tag as input.
+	(completion-separator-self-insert-autofilling): Ditto.
+
+	* man/x-symbol.texi 3.5c.
+	(FAQ XEmacs Core): New subsection.
+	(Installing Fonts): XEmacs might run on a different machine.
+	(Miscellaneous Packages): Mention packages completion and
+	flyspell.
+
+2001-01-05  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-hooks.el: Would sometimes perform strange
+	conversions when `global-flyspell-mode' is enabled.
+	Reported by Fred Labrosse <ffl@aber.ac.uk>.
+	(x-symbol-after-insert-file): Disable `flyspell-mode-on' here.
+	Would be called from function in `first-change-hook'.
+	(x-symbol-write-file-hook): Ditto.
+
+	* lisp/x-symbol.el (x-symbol-decode): Ditto.
+	(x-symbol-encode): Ditto.
+	(x-symbol-mode-internal): Ditto.
+
+2000-10-22  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* man/Makefile (TEXI2HTML): Changes for texi2html-1.62+.
+
+	* man/x-symbol.texi (Requirements): Change accordingly.
+
+2000-10-13  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3e, pkg-1.11.
+
+2000-10-03  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* fonts/xsymb1_12.bdf, fonts/xsymb1_14.bdf: New characters, used
+	for token languages "Isabelle Symbol" and "TeX macro".
+	From Markus Wenzel <wenzelm@informatik.tu-muenchen.de>.
+	(cataleft, cataright): New characters.
+
+	* lisp/x-symbol.el (x-symbol-xsymb1-table): Define new characters.
+	(x-symbol-xsymb1-table): Minor changes in electric binding for
+	`semanticsleft' and `semanticsright'.
+	Suggested by Markus Wenzel <wenzelm@informatik.tu-muenchen.de>.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-xsymb1-table):  Define user
+ 	defined macros for new characters.
+
+	* man/x-symbol.texi 3.5b.
+	(TeX Macro Installation): Additions.
+	(Wishlist Fonts): Changes.
+
+	* Makefile (srckit): clean-man is no target anymore.
+	(test): Delete target.
+	
+2000-09-03  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3d, pkg-1.10.
+	
+2000-07-23  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol.el (x-symbol-init-language): No warning if
+	`x-symbol-exec-directory' is no directory.
+	(x-symbol-grid): `temp-buffer-show-function' might be nil.
+	Reported by Stefan Monnier <monnier+gnu/emacs@rum.cs.yale.edu>.
+
+	* man/x-symbol.texi 3.5a.
+	(Installing Executables): Is really optional now, no warnings.
+	(Math Mode and Subscripts): New subsection.
+	(TeX and BibTeX): Is now subsection of "TeX Macro".
+	(FAQ Stupid Subscripts): Mention my "x-font-lock.el".
+	(Bug Reports): The person who extends info to use fonts/colors for
+	@strong will appear on my acknowledgment list...
+	(FAQ Font Size): Mention scaling.
+
+	* XEmacs.rules: Be less different to original XEmacs.rules.
+	(XEMACS): Always use "xemacs".
+	(TAR): Use plain "tar".
+
+	* Makefile: Be more flexible from where to install/distribute.
+ 	(BUILD_MULE): Overwrite with value "old".
+	(RCOPY): Overwrite with value "cp -p".
+	(TAR): Overwrite with value "/usr/local/guru/gtar -h".
+	(EXTRA_SOURCES): Add lisp/x-symbol-mule.elc with BUILD_MULE=old.
+	(PRELOADS): Reflect change in semantics of XEmacs' vanilla option.
+
+	* Makefile: Include web pages in source distribution.
+	(ZIP): New variable, value "gzip -v9".
+	(WWWS): New variable with html files for X-Symbol home page.
+	(release): Use them
+	(releasePA): New target.
+
+	* www/changes.html: Add file to source distribution.
+
+	* www/emacs.html: Add file to source distribution.
+
+	* www/features.html: Add file to source distribution.
+
+	* www/index.html: Add file to source distribution.
+
+	* www/setup.html:  Add file to source distribution.
+
+2000-06-30  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol.el: Providing direction nil when rotating a
+	character won't work.  Only `therefore1' has direction nil...
+	(x-symbol-next-valid-charsym): Reorder arguments.  Argument
+	DIRECTION is required, t/nil is swapped.
+	(x-symbol-valid-context-charsym): Change accordingly.
+	(x-symbol-next-valid-charsym-before): Ditto.
+	(x-symbol-rotate-key): Ditto.
+
+2000-05-31  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3c, pkg-1.09.
+
+2000-05-21  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* man/x-symbol.texi 3.5.
+	(Installation): Various changes throughout the section.
+	(Syntax Hiliting Packages): Renamed from "font-lock Packages".
+	(Charset Fonts): New section with three subsections.
+	(TeX and BibTeX): New subsection.
+	(Foreign Languages): New section.
+	(Input Method Electric): Various changes.
+	(Super and Subscripts): Various changes.  Delete subsections,
+	parts moved to new section "Charset Fonts".
+	(Image Files): Minor changes.  Explain new user option
+	`x-symbol-image-searchpath-follow-symlink'.
+	(FAQ Font Size): New subsection.
+	(Bug Reports): Be more detailed.
+	(Changes 3.3): New subsection.
+	(Acknowledgments): Updated.  Include URLs.
+	(Indices): New pages as workaround for bug in TeX output.
+
+	* package-info.in: Change `standards-version' to 1.1.
+
+	* XEmacs.rules (clean): Deletia.
+	(mostlyclean): Delete elc files.
+	(realclean): New target.
+	(extraclean): Is the strongest!
+	(srckit-std): TAR follows symlinks.
+
+	* Makefile (CONFIGURATION): New variable.
+	(binaries): Use it and PACKAGEDIR.
+	(clean-man): Deletia.
+	(clean): New target.
+
+	* fonts/Makefile (all): Use recursive Make.
+
+	* man/Makefile (clean): New target.
+
+1999-12-18  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-hooks.el: Remove annoyance for me, set ELisp
+	indent in code, not in Local Variables eval section of ...
+	(x-symbol-define-user-options): ...x-symbol-hook.el.
+	(x-symbol-dolist-delaying): ...x-symbol.el.
+	(x-symbol-do-plist): ...x-symbol.el.
+
+	* lisp/x-symbol-hooks.el (x-symbol-initialize): Would not work on
+	XEmacs/NT.  Not that this is particularly useful...
+	(x-symbol-data-directory): Warn if X-Symbol is not installed at
+	the proper place.
+	(x-symbol-font-directory): Nil if `x-symbol-data-directory' is
+	nil.
+
+	* lisp/x-symbol-vars.el (x-symbol-exec-directory): No warning for
+	value nil.  Offer customization choice for "No executables".
+	(x-symbol-image-searchpath-follow-symlink): New user option.
+
+	* lisp/x-symbol-image.el (x-symbol-image-try-special): Don't use
+	image if `x-symbol-image-data-directory' is nil.
+	(x-symbol-image-init-memory-cache-1): The image cache directory
+	should be readable.
+	(x-symbol-image-searchpath-1): New function.
+	(x-symbol-image-searchpath): New function.
+	(x-symbol-image-init-memory-cache): Use it.
+	(x-symbol-image-active-file): Use it.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-image-searchpath): Use
+	`split-path' if fboundp.
+
+1999-06-12  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3b, pkg-1.08.
+
+1999-06-12  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* man/x-symbol.texi (Installing Fonts Exceed): New section.
+
+	* fonts/Makefile (gens): New target.
+
+1999-03-13  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3a, pkg-1.07.
+
+	* man/x-symbol.texi 3.4a.
+	(http, maintainer): Reset...
+
+	* lisp/x-symbol-vars.el (x-symbol-package-url): Reset.
+	(x-symbol-maintainer-address): Reset.
+
+1999-01-30  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol.  Copyright transferred to the FSF.
+
+1999-01-21  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-hooks.el (x-symbol): Provide info-link.
+
+1999-01-18  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.3, pkg-1.06.
+
+	* man/x-symbol.texi 3.4.
+	(http, maintainer): Changed.
+
+	* lisp/x-symbol-vars.el (x-symbol-package-url): Changed.
+	(x-symbol-maintainer-address): Changed.
+
+1999-01-15  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol.el: Bug fix in comint support.  Reported by
+ 	Alastair Burt <burt@dfki.de>.
+	(x-symbol-decode-region): Add autoload cookie.
+	(x-symbol-comint-output-filter): Moved to x-symbol-hooks.el.
+	(x-symbol-comint-send): Ditto.  Set `selective-display'.
+
+	* lisp/x-symbol-hooks.el (x-symbol-key): Widget definition moved
+ 	from x-symbol.el, used in vars defined here.
+	(x-symbol-modes-or-regexp): Ditto.
+	(x-symbol-auto-mode): Ditto.
+
+	* lisp/x-symbol-vars.el (x-symbol-context-ignore): Set to nil.
+	(x-symbol-function-or-regexp): XEmacs custom bug workaround.
+ 	(x-symbol-context-init-ignore): New variable.
+	
+	* lisp/x-symbol.el (x-symbol-init-input): Use it.  Keep chains.
+
+	* lisp/x-symbol-sgml.el (x-symbol-sgml-class-alist): New class.
+ 	(x-symbol-sgml-non-l1-face): New dark orange face.
+	(x-symbol-sgml-class-face-alist): Use new class and face.
+	(x-symbol-sgml-latinN-table): Set new class `non-l1'.
+	(x-symbol-sgml-xsymb0-table): Ditto.
+	(x-symbol-sgml-xsymb1-table): Ditto.
+
+1999-01-11  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.2b, pkg-1.05.
+
+1999-01-08  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* man/x-symbol.texi (Installation): Different order.
+
+	* lisp/x-symbol-hooks.el (x-symbol-initialize): Append rather then 
+	prepend X-Symbol's font directory to font path.
+
+	* lisp/x-symbol-vars.el (x-symbol-group-input-alist): Higher
+	modify score for mathletters.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-image-keywords): Only add
+ 	default extension for \includegraphics if no extension is
+ 	provided.  Reported by <nbecker@fred.net>.
+	(x-symbol-tex-text-face): Use "RoyalBlue" instead "blue".
+
+	* lisp/x-symbol-xmas21.el (x-symbol-paren-reset-mode): New
+	function.  Should be probably part of `list-mode'.
+	(list-mode-hook): Use it.
+
+	* lisp/x-symbol-xmas20.el (x-symbol-paren-reset-mode): Ditto.
+	(list-mode-hook): Ditto.
+
+1999-01-04  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.2a, pkg-1.04.
+
+	* man/x-symbol.texi 3.3.
+
+1998-12-30  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* man/x-symbol.texi (Installation): No need to install fonts.
+
+	* Makefile (DATA_1_FILES): Include fonts/makesub, but not
+ 	fonts/makesubs and fonts/makepcfs in binary distribution.
+	(DATA_1_FILES, DATA_2_FILES): Include less bdf files in binary
+ 	distribution, only sizes 12/14/16.
+	(DATA_3_DEST, DATA_3_FILES): Include pcf files in binary dist.
+	(fonts): New phony target to create pcf files.
+	(all): Include it as dependency.
+	(binaries): New phony target to check batch creation.
+
+	* fonts/Makefile: Complete rewrite.
+
+	* fonts/makepcfs: Deletia.  Handled by fonts/Makefile.
+
+	* fonts/makesub: Renamed from fonts/makesubs.  Only creates super- 
+	and subscript files from one base bdf file.
+
+	* ChangeLog.2: ChangeLog of X-Symbol between Versions 2.1 and 2.6.
+  	Only in source distribution.
+
+	* lisp/x-symbol.el: Auto initialize.  Necessary before
+ 	initializing the charsets since we now set the font path by
+ 	ourselves.  This is OK since the file has no `defcustom' or
+ 	friends, same for all packages which require `x-symbol.el'.  This
+ 	was actually the reason for having a separate `x-symbol-vars.el'.
+  	The alternative would be to put (x-symbol-initialize) at the
+ 	beginning of every function which can be autoloaded--no way.
+
+	* lisp/x-symbol-hooks.el (x-symbol-initialize): Initialize only
+ 	once, except when called with new optional argument ARG.  Call
+ 	`x-symbol-after-init' here, not at top-level.  Allocate colormap.
+	(x-symbol-image-set-colormap): Make usable for initialization.
+	(x-symbol-image-colormap-allocation): Don't allocate colormap
+ 	during loading, i.e., initialization of the variable.
+	(x-symbol-image-convert-colormap): Ditto.
+
+	* lisp/x-symbol-exec.el (x-symbol-exec-create): Don't compile in
+	batch mode.  Suggested by David Aspinall <da@dcs.ed.ac.uk>.
+
+	* lisp/x-symbol-nomule.el (x-symbol-nomule-make-cset): Enable to
+	create executables for all characters in batch mode.
+
+	* lisp/x-symbol-mule.el (x-symbol-mule-make-cset): Ditto.
+
+1998-12-29  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-hooks.el (x-symbol-initialize): Make comint's
+ 	in/output use X-Symbol's conversion functions.
+ 	(x-symbol-initialize): Make X-Symbol work with comint by default.
+	(x-symbol-orig-compint-input-sender): New variable.
+
+	* lisp/x-symbol.el (x-symbol-decode-region): New function.
+	(x-symbol-comint-output-filter): New function.
+	(x-symbol-comint-send): New function.
+
+	* lisp/x-symbol.el (x-symbol-list-info): New command.
+	(x-symbol-list-bury): New command.
+	(x-symbol-list-restore): New optional argument BURY.
+ 	(x-symbol-grid): Always remember reference buffer.
+	(x-symbol-help-output): Ditto.
+	(x-symbol-list-mode-map): Define entries for them.
+
+	* lisp/x-symbol-xmas20.el (x-symbol-list-mode-map): Ditto.
+
+	* lisp/x-symbol-vars.el (x-symbol-info-intro-list): New variable.
+
+1998-12-22  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* fonts/xsymb1_12.bdf, fonts/xsymb1_14.bdf: Changes in chars and
+ 	char appearance.  Used for new token language "Isabelle Symbol" by
+ 	David von Oheimb <oheimb@informatik.tu-muenchen.de>.
+ 	(negatedbox): Deletia.
+	(lozenge1, coloncolon): New characters.
+ 	(bigsqintersection, semanticsleft, semanticsright): Ditto.
+
+	* fonts/xsymb0_12.bdf, fonts/xsymb0_14.bdf: Minor changes.
+
+	* lisp/x-symbol.el (x-symbol-xsymb1-table): Define new characters.
+	(x-symbol-init-language): Mention `x-symbol-exec-create' in
+ 	warnings.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-xsymb1-table): Define user
+ 	defined macros for new characters.
+ 	(x-symbol-tex-xsymb0-table): As in latexsym.sty, lozenge
+ 	corresponds to \lozenge, not \Diamond.  Package amssymb.sty
+	defines \Diamond as \lozenge, though.
+
+1998-12-17  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-hooks.el (x-symbol-font-directory): New variable.
+	(x-symbol-initialize): Initialize font path by default.
+	(x-symbol-initialize): Add `x-symbol-font-directory' to font
+	path.  From Jim Radford <radford@robby.caltech.edu>.
+
+	* fonts/Makefile (PERL): Don't use -w switch.  Suggested by Jan
+ 	Vroonhof <vroonhof@math.ethz.ch>.
+ 	(PERL, KSH): Trust users to have set up the correct PATH for perl
+ 	and ksh.  Suggested by Jim Radford <radford@robby.caltech.edu>.
+
+1998-12-14  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.2, pkg-1.03 is released.
+
+1998-12-11  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-hooks.el: Would sometimes encode characters when
+ 	reverting the buffer.  This includes most VC commands.
+ 	(x-symbol-after-insert-file): If `insert-file-contents' is not
+ 	called inside `insert-file', decode all tokens.  Unfortunatly,
+ 	there seem to be no general way to get to know the start of the
+ 	inserted region.  See info node "Wishlish XEmacs".
+
+	* lisp/x-symbol.el (nuke-x-symbol): New function.
+	(change-major-mode-hook): Use it.  Suggested by M G Berberich
+ 	<berberic@forwiss.uni-passau.de>.
+
+	* Makefile (TEXI_FILES): Also include `man/Makefile' in binary
+	distributions for users who want to produce PS/HTML files.
+	(DATA_FILES): Don't put README in the binary distribution.
+	(PACKAGEDIR): New variable.
+	(test): New personal target.
+
+1998-12-09  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.1g, pkg-1.02.
+
+	* XEmacs.rules (XEMACS): Use XEmacs/Mule.
+	(clean): Also delete $(MULE_ELCS).
+
+	* Makefile (MULE_ELCS): Set after `include ./XEmacs.rules'.
+
+1998-12-07  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.1g, pkg-1.01.
+
+	* lisp/x-symbol-mule.el (x-symbol-mule-default-charset): New
+	variable.  Provide an easier XEmacs-21/Mule bug workaround.
+	(x-symbol-mule-make-char): Use it.
+
+1998-12-05  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* Makefile (XMAS20): New variable.  By default, make binary
+ 	distribution executable under XEmacs-20 by not using XEmacs-21's
+ 	feature of uninterned symbols.  That is, the "underground binary
+ 	package" is obsolete and not distributed anymore.
+	(release): New personal target.
+
+	* XEmacs.rules: Make _pkg.el executable under XEmacs-20.
+
+	* man/x-symbol.texi 3.2b: Changed appropriatly.
+	(Wishlist): Additional subsections.
+
+	* lisp/x-symbol-hooks.el (x-symbol-initialize): Make interactive.
+
+1998-12-01  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.1f, pkg-1.00.
+
+	* man/x-symbol.texi 3.2a: New installation instructions.
+
+	* lisp/x-symbol-myuc.el: New file, only in source distribution.
+	Defines example token language from manual.
+
+1998-11-25  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-xmas20.el: Delete autoloads and custom-loads.  The
+ 	packaging system already works with XEmacs-20.
+	(x-symbol-xmas20-list-mode-hook): Deletia.  Does not work for some
+ 	reason.
+	(x-symbol-list-mode-map): Define whole map instead.
+
+	* lisp/x-symbol.el (x-symbol-package-bug): Make sure that the
+	*Help* or *info* buffer is visible when editing the *mail*.
+	(x-symbol-init-language): Allow entry without tokens.
+	(x-symbol-set-variable): Use `customize-set-variable' if variable
+ 	is customized, non-local and without special set function.
+
+	* lisp/x-symbol-vars.el (x-symbol-variable-interactive): Would bug
+ 	out with booleans.
+
+	* lisp/x-symbol-sgml.el (x-symbol-sgml-token-list-name): Allow nil
+ 	for unicode, useful for shadowing.
+	(x-symbol-sgml-token-list-code): Ditto.
+	(x-symbol-sgml-token-list-netscape): Ditto.
+
+	* lisp/x-symbol-nomule.el ((featurep 'mule)): Make file compilable 
+	under XEmacs/Mule for easier packaging.
+
+	* Makefile: Change appropriatly.
+
+	* XEmacs.rules: Insert chmod.
+
+	* man/x-symbol.texi 3.2: Last old installation instructions.
+
+1998-11-21  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.1e, pkg-0.02, not uploaded.
+
+1998-11-18  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* Makefile: New file for XEmacs packaging.  Thanks to Jan Vroonhof
+ 	<vroonhof@math.ethz.ch>.
+
+	* XEmacs.rules: Ditto.
+
+	* package-info.in: Ditto.
+
+	* man/x-symbol.texi: Set file name to x-symbol.info, because my
+ 	makeinfo-1.68 adds spurious spaces when called with option `-o'
+	and a file name other than the original one.
+
+	* etc/*.xbm: Icons from package frame-icon.
+
+	* origfonts/*.bdf: Include for easier installation.
+
+	* lisp/x-symbol-site.el: The use of this file is depreciated.
+  	Most configurations have been moved to `x-symbol-initialize'.
+
+	* lisp/x-symbol-xmas20.el: Add autoloads and custom-loads.
+
+	* lisp/x-symbol-xmas21.el: Add missing non X-Symbol autoloads.
+
+	* lisp/x-symbol.el: Remove autoloads.
+	(x-symbol-package-info): Use `Info-goto-node'.
+ 	(x-symbol-package-bug): Ditto.  Always allow to send the bug
+ 	report, but pop up *Help* buffer if the info files are not
+ 	installed.
+
+	* lisp/x-symbol-hooks.el: Remove autoloads and custom-loads.
+ 	(x-symbol-initialize): New user option.
+	(x-symbol-initialize): Use it, i.e., also set key bindings and
+ 	integrate X-Symbol with other packages.
+	(x-symbol-auto-conversion-method): New default value `auto-slow'.
+	(x-symbol-after-init): Function `x-symbol-site-after-init' from
+ 	lisp/x-symbol-site.el.  Set `x-symbol-auto-conversion-method' to
+ 	`fast' if value is `auto-slow' and crypt has not been loaded.  Use
+ 	variable `x-symbol-initialize'.
+	(init-file-loaded): Use it.
+	(x-symbol-auto-mode-suffixes): Different order in result.  Custom
+ 	would always think that the state of the variable has changed.
+ 	(x-symbol-data-directory): New variable.
+	(x-symbol-image-convert-colormap): Use it.
+
+	* lisp/x-symbol-vars.el (x-symbol-exec-directory): Use it.
+	(x-symbol-image-data-directory): Use it.
+
+1998-11-13  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.1d.
+
+1998-11-12  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-site.el (x-symbol-site-after-init): Don't use
+ 	custom set function.  Saving, then loading the custom-file would
+ 	fail.  Reported by Alex Ott <ott@phtd.tpu.edu.ru>.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-extended-token-list): New
+ 	function.  Suggested by Uwe Brauer <oub@sunma4.mat.ucm.es>.
+
+1998-11-07  Raymond Nijssen  <rxtn@gte.net>
+
+	* lisp/x-symbol-image.el (x-symbol-image-editor): Set correct
+ 	default directory.
+
+1998-11-05  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.1c.
+
+1998-10-26  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-vars.el (x-symbol-menu): Remove Custom submenu.
+  	The filter function would always be executed in the X-Symbol popup
+ 	menu.  Use menu item "Browse Customization" or menu "Options ->
+ 	Customize -> Emacs -> Wp -> X-Symbol" instead.
+
+	* lisp/x-symbol-hooks.el (x-symbol-package-bug): New autoload.
+
+1998-10-23  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.1b.
+
+1998-10-21  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.1a.
+
+1998-10-20  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-site.el (function-key-map): Do not de-install
+ 	package x-compose.  Suggested by Jan Vroonhof
+ 	<vroonhof@math.ethz.ch>.
+
+	* lisp/x-symbol-hooks.el (x-symbol-compose-key): Default value is
+ 	C-=.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-electric-ignore-regexp):
+ 	Don't use electric postfix tilde with language `tex'.
+
+1998-10-19  Jan Vroonhof  <vroonhof@math.ethz.ch>
+
+	* lisp/x-symbol-mule.el (x-symbol-mule-make-char): Would not work
+ 	with XEmacs-21.0/Mule and coding system `iso-8859-1', which is the
+ 	default value of `x-symbol-default-coding'.
+
+1998-10-16  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.1 is released.
+
+	* man/x-symbol.texi 3.1: Changes.
+
+	* man/Makefile: Don't split info file.
+
+1998-10-07  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-tex.el (x-symbol-vars): Require.
+
+	* lisp/x-symbol-sgml.el (x-symbol-vars): Require.
+
+	* lisp/x-symbol-utex.el (x-symbol-vars): Require.
+
+1998-10-02  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0f (stable).
+
+	* man/x-symbol.texi 0.6: Manual completed.
+
+1998-09-29  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-image.el (x-symbol-image-active-file): Would
+ 	ignore directory in image highlight menu.
+
+	* lisp/x-symbol-vars.el (x-symbol-image-help-echo): Also put in
+ 	customization group `Info Strings'.
+	(x-symbol-menu): Use "Contact Maintainer" instead "Send Bug
+ 	Report" to make `x-symbol-package-bug' more likely to be used.
+
+	* lisp/x-symbol.el (x-symbol-language-access-alist): Additional
+ 	language access `x-symbol-required-fonts'.
+	(x-symbol-init-language): Use it.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-required-fonts): New
+ 	variable.
+
+	* lisp/x-symbol-sgml.el (x-symbol-sgml-required-fonts): New
+ 	variable.
+
+	* lisp/x-symbol-utex.el (x-symbol-utex-required-fonts): New
+ 	variable.
+
+1998-09-25  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0e.
+
+	* man/x-symbol.texi 0.1: New file.
+
+	* man/Makefile 3.0: New file.
+
+1998-09-21  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol.el: Documentation of package X-Symbol is in
+ 	TeXinfo.
+ 	(x-symbol-package-info): Enter Info file.
+	(x-symbol-package-bug): Prefix argument.  Check Info files.
+	(Info-find-node): New autoload.
+	(x-symbol-package-reply-to-report): New command for maintainer.
+	(x-symbol-setup-minibuffer): New function.
+	(minibuffer-setup-hook): Use it as member.
+	(x-symbol-list-mouse-selected): Can be used within `isearch'.
+	(x-symbol-event-matches-key-specifier-p): Ignore strange error in
+ 	`event-matches-key-specifier-p'.
+	(x-symbol-xsymb1-table): `visiblespace' has modify context "_".
+	(x-symbol-modify-key): Use `x-symbol-context-ignore'.
+	(x-symbol-rotate-key): Ditto.
+	(x-symbol-electric-input): Ditto.
+
+	* lisp/x-symbol-vars.el (x-symbol-context-ignore): New user
+ 	option.
+	(x-symbol-sgml-auto-coding-alist): Lowercase.
+	(x-symbol-maintainer-address): Made a constant.
+	(x-symbol-installer-address): New variable.
+	(x-symbol-latin1-fonts): Use list of fonts.
+	(x-symbol-xsymb1-fonts): Ditto.
+
+	* lisp/x-symbol-site.el (x-symbol-site-after-init): Delete special
+ 	setup for func-menu.
+
+1998-09-14  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0d.
+
+1998-09-11  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-hooks.el: Customized.  Add custom loads.
+ 	(x-symbol): New group.
+	(x-symbol-mode): New group.
+	(x-symbol-input-init): New group.
+	(x-symbol-input-control): New group.
+	(x-symbol-info-general): New group.
+	(x-symbol-info-strings): New group.
+	(x-symbol-miscellaneous): New group.
+	(x-symbol-image-general): New group.
+	(x-symbol-image-language): New group.
+	(x-symbol-tex): New group.
+	(x-symbol-sgml): New group.
+	(x-symbol-utex): New group.
+	(x-symbol-image-set-colormap): New function.
+	(x-symbol-image-colormap-allocation): New variable.
+	(x-symbol-image-convert-colormap): Moved from x-symbol-vars.el.
+
+	* lisp/x-symbol-vars.el: Customized.
+	(x-symbol-menu): New entries for customization.
+ 	(x-symbol-command): New widget.
+	(x-symbol-key): New widget.
+	(x-symbol-charsym): New widget.
+	(x-symbol-group): New widget.
+	(x-symbol-coding): New widget.
+	(x-symbol-function-or-regexp): New widget.
+	(x-symbol-fancy-spec): New widget.
+	(x-symbol-fancy): New widget.
+	(x-symbol-modes-or-regexp): New widget.
+	(x-symbol-auto-mode): New widget.
+	(x-symbol-auto-coding): New widget.
+	(x-symbol-headers): New widget.
+	(x-symbol-class-info): New widget.
+	(x-symbol-class-faces): New widget.
+	(x-symbol-image-keywords): New widget.
+	(x-symbol-heading-font): Deletia.
+	(x-symbol-heading-face): Also specify font.
+	(x-symbol-xsymb0-fonts): The xsymb0 fonts now have registry ADOBE.
+ 	(x-symbol-fancy-cache-size): New variable.
+	(x-symbol-cache-size): New variable.
+	(x-symbol-set-cache-variable): New variable.
+
+	* lisp/x-symbol-sgml.el: Customized.
+	(x-symbol-sgml-font-lock-contents-regexp): Renamed
+	(x-symbol-sgml-match-subscript): Changed appropriately.
+
+	* lisp/x-symbol-tex.el: Customized.
+
+	* lisp/x-symbol-utex.el: Customized.
+
+	* lisp/x-symbol.el: Use hashtables, not symbol properties for
+ 	caching.
+	(x-symbol-ensure-hashtable): New function.
+	(x-symbol-puthash): New function.
+	(x-symbol-fancy-value-cache): New variable.
+	(x-symbol-charsym-info-cache): New variable.
+	(x-symbol-language-info-caches): New variable.
+	(x-symbol-coding-info-cache): New variable.
+	(x-symbol-keys-info-cache): New variable.
+ 	(x-symbol-fancy-value): Change appropriatly,
+	(x-symbol-charsym-info): Ditto.
+	(x-symbol-language-info): Ditto.
+	(x-symbol-coding-info): Ditto.
+	(x-symbol-keys-info): Ditto.
+	(x-symbol-recursive-set-key-internal): Deletia.
+	(x-symbol-recursive-set-key): Deletia.
+	(x-symbol-temporary-set-key): Deletia.
+	(x-symbol-xsymb0-cset): Include registry ADOBE.
+	(x-symbol-xsymb1-cset): Include registry XSYMB.
+	(x-symbol-grid): Use font instance from x-symbol-heading-face.
+
+	* lisp/x-symbol-image.el (x-symbol-image-converter): Check
+ 	colormap.
+ 	(x-symbol-image-start-convert-colormap): Check for non-nil values.
+
+	* lisp/x-symbol-site.el: Use `custom-set-variables' where
+ 	appropriate.
+ 	(x-symbol-site-colormap-instance): Deletia.
+	(x-symbol-image-converter): Don't set value here.
+
+1998-09-08  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0c.
+
+1998-09-07  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-tex.el: \mu is represented by a character in the
+ 	Adobe Symbol font, not in a latin-{1,3,5} font anymore.
+ 	(x-symbol-tex-latin1-table): Use \mathmicro for U00B5.
+	(x-symbol-tex-xsymb0-table): Define entry for \mu.
+	(x-symbol-tex-xsymb1-table): Additional character for \therefore.
+
+	* lisp/x-symbol-sgml.el: Define entries for most SGML entities in
+ 	HTML-4.0 specification.
+	(x-symbol-sgml-token-list-name): New function.
+	(x-symbol-sgml-token-list-code): New function.
+	(x-symbol-sgml-token-list-netscape): New function.
+	(x-symbol-sgml-token-list): Use it.
+ 	(x-symbol-sgml-header-groups-alist): Add extra headers.
+	(x-symbol-sgml-latin1-table): Changed table format.
+	(x-symbol-sgml-latinN-table): Ditto.  Additional name entities.
+	(x-symbol-sgml-xsymb0-table): Ditto.  Additional characters.
+	(x-symbol-sgml-xsymb1-table): Ditto.  Additional characters.
+
+	* lisp/x-symbol.el: The normal `mu' is now from the Adobe Symbol
+ 	font.  Prefer Dbar/dbar to ETH/eth.
+ 	(x-symbol-header-charsyms): Consistent GRID order.
+	(x-symbol-subgroup-less-than): Put charsyms without subgroups at
+ 	the end of the GRID group.
+	(x-symbol-latin1-table): Changed charsym mu to mu1.
+	(x-symbol-latin3-table): Ditto.
+	(x-symbol-latin5-table): Ditto.
+	(x-symbol-xsymb0-table): New charsym mu.
+	(x-symbol-latin1-table): Higher score for ETH, eth.
+	(x-symbol-latin2-table): Lower score for Dbar, dbar.
+ 	(x-symbol-xsymb0-table): New charsym radicalex, delete therefore.
+	(x-symbol-xsymb1-table): New charsyms euro and therefore1.
+
+	* lisp/x-symbol-vars.el (x-symbol-latin5-fonts): Delete iso8859-2
+ 	fonts.
+
+	* lisp/x-symbol-mule.el (x-symbol-mule-make-cset): Issue warnings
+ 	for missing fonts.
+
+	* lisp/x-symbol-nomule.el (x-symbol-nomule-make-cset): Do not
+ 	issue extra warning if font for default face does not exists.
+	(x-symbol-nomule-init-faces): Issue warnings for missing fonts.
+
+	* lisp/x-symbol-hooks.el (x-symbol-auto-mode-suffixes): New
+ 	function.
+	(x-symbol-auto-mode-suffixes): Use it.
+
+	* lisp/x-symbol-site.el (x-symbol-site-crypt-ok): New variable.
+	Use it and `x-symbol-auto-mode-suffixes'.
+
+1998-09-04  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0b.
+
+	* lisp/x-symbol.el (x-symbol-match-in-alist): Would bug out on
+ 	image file names without special URL prefix with language `sgml'.
+
+1998-09-03  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0a.
+
+	* lisp/x-symbol-image.el: Changed semantics of image keywords to
+ 	handle "file:", "http:" etc in image file names of language
+ 	`sgml'.  Changed semantics of `x-symbol-image-cache-directories'.
+	(x-symbol-image-parse-region): Changed semantics of image
+ 	keywords.  If the definition for the match returns nil, the image
+ 	command won't be highlighted.
+	(x-symbol-image-default-file-name): New function used as default.
+	(x-symbol-image-editor): Set `default-directory'.
+	(x-symbol-image-cache-name): Be case insensitive under vax-vms.
+  	Different semantics of `x-symbol-image-cache-directories'.
+
+	* lisp/x-symbol-vars.el (x-symbol-image-cache-directories):
+ 	Different semantics and value.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-image-keywords): Changed
+ 	according to different semantics.
+
+	* lisp/x-symbol-sgml.el (x-symbol-sgml-image-file-truename-alist):
+ 	New variable.
+	(x-symbol-sgml-image-file-truename): New function.
+	(x-symbol-sgml-image-keywords): Use it.
+
+	* lisp/x-symbol-image.el: v3.0-pre4 to v3.0 bug fixes.
+	(x-symbol-image-create-glyph): Would bug out on temporary image
+ 	cache files.  Bug introduced between v3.0-pre4 and v3.0.
+	(x-symbol-image-file-name): Would show expanded file name in echo
+ 	area.  Bug introduced between v3.0-pre4 and v3.0.
+	(x-symbol-image-editor): Use `x-symbol-match-in-alist'.
+	(x-symbol-image-cache-name): Ditto.
+	(x-symbol-image-convert-file): Ditto.
+
+	* lisp/x-symbol.el: Would not setup font-lock keywords if x-symbol
+ 	mode is not turned on automatically and wasn't invoked for that
+ 	token language before, e.g., when loading "file.ltx" at the
+ 	beginning.  Reported by Alastair Burt <burt@dfki.de>.
+	(x-symbol-init-font-lock): Handle case where font-lock-keywords
+ 	have already been set up.
+ 	(x-symbol-mode-internal): Check in `x-symbol-init-font-lock'.
+
+	* lisp/x-symbol.el: Initialization of input methods now takes half
+ 	time.
+	(x-symbol-ignore-key-prefix): Deletia.
+	(x-symbol-temporary): Deletia.
+	(x-symbol-map-default-binding): New function.
+	(x-symbol-event-matches-key-specifier-p): New function.
+	(x-symbol-init-default-keys): Use it as default binding for
+ 	X-Symbol keymap instead defining 1672 bindings.
+ 	(x-symbol-match-in-alist): New function.
+
+	* lisp/x-symbol-vars.el (x-symbol-map-default-keys-alist): New
+ 	variable.
+
+	* lisp/x-symbol-hooks.el (x-symbol-key-autoload): Works with
+ 	prefix argument now, using some strange loop.
+
+	* lisp/x-symbol-nomule.el (x-symbol-nomule-character-quote-syntax):
+	Moved from x-symbol.
+
+	* lisp/x-symbol-site.el (init-file-loaded): If non-nil, run
+ 	`x-symbol-site-after-init' straight away.
+
+1998-09-03  Alastair Burt  <burt@dfki.de>
+
+	* lisp/x-symbol-site.el (x-symbol-site-after-init):
+ 	`LaTeX-mode-hook' or `latex-mode-hook' might be undefined.
+
+1998-09-02  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0 (beta) is released.
+
+1998-08-28  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-nomule.el (x-symbol-nomule-match-cstring): Would
+ 	not fontify remaining cstrings after incorrect ones, e.g., if the
+ 	user has inserted characters with something like "C-q 2 3 7".
+
+	* lisp/x-symbol-image.el: Directory part of image file names
+ 	stored in the memory cache does not have to be implictly relative
+ 	anymore.
+	(x-symbol-image-init-memory-cache-1): New function.
+	(x-symbol-image-init-memory-cache): Use it.  Language access is
+ 	renamed to `x-symbol-image-cached-dirs'.
+	(x-symbol-image-parse-region): Renamed language access.
+	(x-symbol-image-junk-glyph): New variable.
+	(x-symbol-image-create-glyph): Use it.
+	(x-symbol-image-cache-name): Don't check whether the image cache
+ 	file is writable.
+	(x-symbol-image-create-glyph): Check it here.
+	(x-symbol-image-file-name): Use `expand-file-name', not `concat'.
+	(x-symbol-image-start-convert-mono): Do not store matte channel in
+ 	image cache file.
+	(x-symbol-image-start-convert-color): Ditto.
+	(x-symbol-image-start-convert-truecolor): Ditto.
+	(x-symbol-image-start-convert-colormap): Ditto.
+
+	* lisp/x-symbol-vars.el (x-symbol-image-in-searchpath): Old name.
+	(x-symbol-image-use-remote): New name, inverse meaning.
+	(x-symbol-image-special-glyphs): Add JUNK element.
+	(x-symbol-image-editor-alist): Use "display" instead "xv".  We
+ 	need ImageMagick anyway.
+	(x-symbol-image-cache-directories): Delete my personal entries.
+
+	* lisp/x-symbol.el (x-symbol-language-access-alist): Language
+ 	access is renamed to `x-symbol-image-cached-dirs'.
+
+	* lisp/x-symbol-sgml.el (x-symbol-sgml-image-cached-dirs):
+ 	Renamed.
+
+	* lisp/x-symbol-tex.el (x-symbol-tex-image-cached-dirs): Renamed.
+
+	* lisp/x-symbol-utex.el (x-symbol-utex-image-cached-dirs):
+ 	Renamed.
+
+1998-08-27  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0-pre4.
+
+	* lisp/x-symbol-mule.el (x-symbol-mule-encode-lisp): Would not add
+ 	necessary space after token.
+
+	* lisp/x-symbol-nomule.el (x-symbol-nomule-encode-lisp): Ditto.
+
+	* lisp/x-symbol-exec.el (x-symbol-exec-create-decode): Would not
+ 	be able to define case ignoring token language.
+
+	* lisp/x-symbol.el (x-symbol-read-token): Completion would not
+ 	ignore case with case ignoring token language.
+
+	* lisp/x-symbol-hooks.el (x-symbol-auto-mode-alist): Do not
+ 	automatically turn on x-symbol mode in buffers with sgml-mode.
+
+1998-08-25  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0-pre3.
+
+1998-08-24  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-xmas21.el: New file.
+ 	(standard-syntax-table): Workaround for XEmacs bug with char
+ 	syntax `inherit'.
+
+	* lisp/x-symbol-xmas20.el (standard-syntax-table): Ditto.
+
+	* lisp/x-symbol-hooks.el: Load x-symbol-xmas21 with XEmacs-21.X.
+ 	(x-symbol-after-insert-file): Would decode tokens outside inserted
+ 	region and would not fontify region if decoded by executable.
+
+	* lisp/x-symbol-vars.el (x-symbol-info-face): Use green4.
+	(x-symbol-heading-face): Ditto.
+	(x-symbol-image-convert-mono-regexp): New user option.
+	(x-symbol-image-convert-colormap): Ditto.
+
+	* lisp/x-symbol-image.el (x-symbol-image-start-convert-colormap):
+ 	New function.  Thanks to Martin Ramsch <m.ramsch@computer.org>.
+
+	* lisp/x-symbol.el (x-symbol-xsymb1-table): Context changes.
+	(x-symbol-grid): Init input methods if necessary.
+	(x-symbol-modify-key): Ditto.
+	(x-symbol-rotate-key): Ditto.
+
+	* lisp/x-symbol-site.el (x-symbol-site-after-init): New function
+ 	used for integration with bib-cite and func-menu.
+	(x-symbol-image-convert-colormap): Set value.
+	(x-symbol-site-colormap-instance): Variables to prevent
+ 	color-deallocation from colormap.
+	(x-symbol-image-converter): Set value.
+
+1998-08-24  Carsten Dominik  <dominik@strw.leidenuniv.nl>
+
+	* lisp/x-symbol-site.el (reftex-translate-to-ascii-function):
+ 	Overwrite default function of reftex-3.35.
+
+1998-08-21  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0-pre2.
+
+	* lisp/x-symbol-exec.el (x-symbol-exec-create): Would not compile
+ 	anything if `x-symbol-exec-directory' does not end with a slash.
+	(x-symbol-exec-makefile-pre): Do not provide own lex/cc rule.
+	(x-symbol-exec-makefile-post): Delete files "*.c" before.
+
+1998-08-14  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* X-Symbol 3.0-pre1.
+
+1998-08-09  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* lisp/x-symbol-site.el: Complete rewrite.
+
+	* lisp/x-symbol-xmas20.el: New file.
+
+	* lisp/x-symbol-macs.el: New file.
+
+	* lisp/x-symbol-mule.el: New file.
+
+	* lisp/x-symbol-nomule.el: New file.  Rewrite of code in
+ 	x-symbol.el.
+
+	* lisp/x-symbol-hooks.el: Complete rewrite.
+
+	* lisp/x-symbol-vars.el: New file.  Rewrite of code in
+ 	x-symbol.el.
+
+	* lisp/x-symbol.el: Complete rewrite.
+
+	* lisp/x-symbol-tex.el: New file.  Rewrite of code in x-symbol.el.
+
+	* lisp/x-symbol-sgml.el: Complete rewrite.
+
+	* lisp/x-symbol-utex.el: New file.
+
+	* lisp/x-symbol-exec.el: Complete rewrite of x-symbol-create.el.
+
+	* lisp/x-symbol-gtex.el: Deletia.
+
+	* lisp/x-symbol-image.el: All user options are moved to
+ 	x-symbol-vars.el.
+	(x-symbol-image-max-width): Changed value.
+	(x-symbol-image-max-height): Ditto.
+	(x-symbol-special-images): New variable.
+	(x-symbol-image-try-special): New function.
+	(x-symbol-image-broken-image): Use them.
+	(x-symbol-image-create-image): Use them.
+	(x-symbol-image-design-glyph): Use them.
+	(x-symbol-image-locked-glyph): Use them.
+	(x-symbol-image-remote-glyph): Use them.
+
+	* lisp/x-symbol-image.el: Can now be used for all token languages,
+ 	but not independently anymore.  Uses language accesses
+ 	`x-symbol-master-directory', `x-symbol-image-searchpath',
+ 	`x-symbol-image-implicit-dirs' and `x-symbol-image-keywords'.
+	(x-symbol-image-parse-region): Changed appropriately.
+	(x-symbol-image-init-memory-cache): Ditto.
+	(x-symbol-image-tex-keywords): Is now a language access.
+	(x-symbol-image-tex-searchpath): Ditto.
+	(turn-on-x-symbol-image-mode): Deletia.
+
+	* lisp/x-symbol-image.el: Conversion command can now handle
+ 	different input image formats, not just PostScript.
+	(x-symbol-image-converter-list): Deletia.
+	(x-symbol-image-converter): COMMAND is now always a function to
+ 	avoid shell invocation.  It returns the process.
+	(x-symbol-image-start-convert-mono): New function as potential
+ 	COMMAND in `x-symbol-image-converter'.
+	(x-symbol-image-start-convert-color): Ditto.
+	(x-symbol-image-start-convert-truecolor): Ditto.
+	(x-symbol-image-convert-format-alist): New variable.
+	(x-symbol-image-convert-format): New function.
+	(x-symbol-image-create-glyph): Just push conversion command on
+ 	stack.
+	(x-symbol-cache-name-ignore-scale): Deletia.
+	(x-symbol-image-cache-name): Assume value t for deleted var.
+	(x-symbol-image-process-stack): Conversion command now returns the
+ 	process.
+	
+	* lisp/x-symbol-image.el: You can specify different image editors,
+ 	depending on regexps, e.g., file name extensions.
+	(x-symbol-image-editor): Deletia.
+ 	(x-symbol-image-editor-alist): New user option.
+	(x-symbol-image-editor): New function.  Use it.
+	(x-symbol-image-help-echo-format): Old name.
+	(x-symbol-image-help-echo): New name.  Is now a "fancy string".
+	(x-symbol-image-menu-definition): Old name.
+	(x-symbol-image-menu): New name.  Command is in header.
+	(x-symbol-image-highlight-menu): Changed.
+	(x-symbol-image-help-echo): Changed.
+	(x-symbol-image-design-file): Old name.
+	(x-symbol-image-file-name): New name.  Argument swap.
+ 	(x-symbol-image-event-file): New function.
+	(x-symbol-image-active-file): New function.
+	(x-symbol-image-event-files): Deletia.
+	(x-symbol-image-nonpath-file): Deletia.
+
+	* lisp/x-symbol-image.el: Also use memory cache for implicitly
+ 	relative file names using language access
+ 	`x-symbol-image-implicit-dirs', e.g., for "images/mail.png".
+	(x-symbol-image-parse-region): Changed appropriately.
+	(x-symbol-image-init-memory-cache): Ditto.
+ 	(x-symbol-image-cache-directories): Additional entries.
+	(x-symbol-image-expand-file-name): Deletia.

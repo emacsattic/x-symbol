@@ -1,0 +1,1358 @@
+1998-10-16  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.6 is released.  Frozen.  Users of
+	XEmacs-20.3 or higher should use X-Symbol 3.1 or higher.
+
+1998-09-02  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.5f.
+
+1998-08-07  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-image.el: RCS:2.6.  Base for v3.0.
+	(x-symbol-image-converter-list): First try png files.
+	(x-symbol-cache-name-ignore-scale): New user option.
+	(x-symbol-image-design-file): New optional arguments.
+	(x-symbol-image-cache-name): Use it.
+	(x-symbol-image-process-sentinel): Also display time.
+
+1998-06-30  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.5e.
+
+1998-06-22  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-all-2token): Under tty --and any other
+ 	case where no symbol characters are used--, the file would have
+ 	length 0 when saving it without converting 8bit latin-1
+ 	characters, i.e., when converting nothing despite having value t
+ 	for `x-symbol-symbols-in-buffer'.  Reported by Solofo Ramangalahy
+ 	<solofo@mpi-sb.mpg.de>.
+	(x-symbol-context-default-table): Make contexts for diagonal
+ 	arrows non-aggressive.
+
+	* x-symbol-image.el (x-symbol-image-process-sentinel): Always
+ 	insert process output at the end of the process buffer.
+
+	* x-symbol-create.el (x-symbol-create-all-exec): The checksum
+	file, not the makefile, should be checked to be writable.
+
+1998-04-21  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.5d.
+
+1998-04-20  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-site.el (?\237): Workaround for XEmacs-20 bug with
+ 	char-syntax `inherit'.  Set syntax for `x-symbol-esc-char' here,
+ 	i.e., before `TeX-mode-syntax-table' is created.  Font-lock, paren
+ 	highlighting and `forward-sexp' and friends would get confused if
+ 	package AucTeX was loaded before package x-symbol.  Reported by
+ 	Solofo Ramangalahy <solofo@mpi-sb.mpg.de>.
+
+	* x-symbol-image.el (x-symbol-image-converter): COMMAND can also
+	be a function instead of a format string.
+	(x-symbol-image-create-glyph): Handle it.
+
+1998-04-06  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.5c.
+
+1998-04-01  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-input-by-context): Change default value to 
+	`OTHER'.  People who do not read the web page are likely to
+	consider the input method CONTEXT as a bug.
+	(x-symbol-context-default-table): The characters for the contexts
+	"'-" and "-`" were swapped.  Reported by Thomas Kleymann
+	<tms@dcs.ed.ac.uk>.  Make "-," non-aggressive.
+
+1998-03-10  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.5b = v2.5 with FAQ additions.
+
+1998-03-05  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.5a = v2.5 with FAQ additions.
+
+1998-03-03  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.5 is released.
+
+1998-02-26  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4m, not uploaded.
+
+1998-02-25  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-dont-modify-code): New configuration
+ 	variable, suggested by Nils Ellmenreich <Nils@Fmi.Uni-Passau.De>.
+	(x-symbol-init-tables): Use it.
+	(x-symbol-init-iso-tables): Use it.
+	(x-symbol-setup-alist): Allow additional extension ".orig".
+	(x-symbol-all-2token): Also set BUFFER without conversion.
+
+	* x-symbol-hooks.el (x-symbol-write-file-data-hook): Would not
+ 	convert \r to \n when saving a buffer with `selective-display' is
+ 	t and `x-symbol-auto-conversion-method' is `fast'.  Reported by
+ 	Alastair Burt <alastair.burt@dfki.de>.
+	(x-symbol-fontify): Package lazy-shot is changed in XEmacs-20.4.
+
+	* x-symbol-site.el: Adaptation for XEmacs-20.4.
+
+	* x-symbol-xmas-20.3.el: Also used for XEmacs-20.4.
+
+1998-01-29  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4l
+
+1998-01-28  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-image.el: Use option "-geometry WxH>" for "convert"
+ 	which does not enlarge pictures.  Use special settings for
+ 	different color devices: Mono, PseudoColor, TrueColor.
+	(x-symbol-image-converter): When computing the default value,
+ 	allow function as test.
+	(x-symbol-image-converter-list): Use it.
+	(x-symbol-image-max-width): Changed default value from 400 to 200.
+	(x-symbol-image-editor): This command can now be used not only
+ 	with the mouse.
+
+1998-01-22  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-image.el: Highlight menu uses $TEXPICTS/$TEXINPUT for
+ 	all implicitly relative file names.  Filenames without directory
+ 	part are only a subset of implicitly relative file names.
+	(x-symbol-image-explicitly-relative-regexp): New configuration
+ 	variable.
+	(x-symbol-image-nonpath-file): New function.
+	(x-symbol-image-event-files): Use it.
+	(x-symbol-image-design-file): Keep directory part.
+	(x-symbol-image-menu-definition): Changed default value.
+	(x-symbol-image-highlight-menu): Use `x-symbol-image-editor'.
+	(x-symbol-image-expand-file-name): Would bug out if `TeX-master'
+ 	is buffer local and a filename without a directory part.  Reported
+ 	by Karsten Muehlmann <km@ibt01.etec.uni-karlsruhe.de> and
+	Laurent Descamps <descamps@imf-lille.fr>.
+	(turn-on-x-symbol-image-mode): Would bug out in buffers without
+ 	`buffer-file-name'.
+
+1997-12-22  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4k.
+
+1997-12-17  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-tex-font-lock-allowed-faces): New user
+ 	option.  With default value, don't use super- and subscripts in
+ 	argument of \label and friends.
+	(x-symbol-tex-font-lock-simple-sub-regexp): New variable.
+	(x-symbol-tex-font-lock-simple-sup-regexp): Ditto.
+	(x-symbol-tex-font-lock-simple): New function.
+	(x-symbol-tex-font-lock-simple-sub): Ditto.
+	(x-symbol-tex-font-lock-simple-sup): Ditto.
+	(x-symbol-tex-font-lock-keywords): Use them.
+	(x-symbol-setup-minibuffer): Don't use locally bound `owindow',
+ 	use `minibuffer-scroll-window' instead.
+	(x-symbol-temporary-set-key): Use `warn' instead `error'.
+	
+	* x-symbol-image.el (x-symbol-image-tex-searchpath): Don't use
+ 	same elements in default value.  Append "./" to default value if
+ 	not present. Reported by Sabine Wetzel <wetzel@fmi.uni-passau.de>.
+	(x-symbol-image-converter): Would default to `gif' instead nil
+ 	under XEmacs without gif support.
+	(x-symbol-image-broken-image): Protect against illegal xbm files.
+  	Only set image under X device.
+	(x-symbol-image-create-image): Ditto.
+	(x-symbol-image-design-glyph): Ditto.
+	(x-symbol-image-locked-glyph): Ditto.
+	(x-symbol-image-remote-glyph): Ditto.
+	(x-symbol-image-process-sentinel): Only set image under X device.
+	(x-symbol-image-create-glyph): Ditto.  If there is no valid image
+ 	converter, use `x-symbol-image-remote-glyph'.
+	(turn-on-x-symbol-image-mode): Allow to use it without valid image
+ 	converter.  Make interactive.
+
+	* x-symbol-hooks.el (turn-on-x-symbol-image-mode): Interactive.
+
+	* x-symbol-xmas-20.0.el (x-symbol-xmas-file-remote-p): New
+	function.
+	(file-remote-p): Aliased to `x-symbol-xmas-file-remote-p'.
+
+	* x-symbol-xmas-19.14.el (x-symbol-xmas-file-remote-p): New
+	function.
+	(file-remote-p): Aliased to `x-symbol-xmas-file-remote-p'.
+
+	* x-symbol-xmas-19.13.el (x-symbol-xmas-file-remote-p): New
+ 	function.
+	(file-remote-p): Aliased to `x-symbol-xmas-file-remote-p'.
+	(x-symbol-xmas-file-name-sans-extension): New function.
+	(file-name-sans-extension): Aliased to
+ 	`x-symbol-xmas-file-name-sans-extension'.
+	(turn-on-x-symbol-xmas-image-mode): New function.
+	(x-symbol-xmas-turn-on-image): Ditto.
+	(x-symbol-image-parse-buffer): New autoload.
+
+	* x-symbol-site.el (find-file-hooks): Only add
+	`x-symbol-site-turn-on-image' under X device.  Under XEmacs-19.13, 
+	add `x-symbol-xmas-turn-on-image'.
+
+1997-12-11  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4j.
+
+1997-12-08  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-create.el (x-symbol-create-exec): Use
+ 	`expand-file-name' instead `concat'.  Would require
+ 	`x-symbol-exec-directory' to end with a slash.  Reported by
+ 	Bernhard Lehner <lehner@fmi.uni-passau.de>.
+
+	* x-symbol-image.el (x-symbol-image-converter): Don't use
+ 	`shell-command' to determine its value since this could split the
+ 	window.  Reported by Bernhard Lehner <lehner@fmi.uni-passau.de>.
+
+	* x-symbol.el (x-symbol-context-default-table): Add encodings for
+	\NG and \ng to their CONTEXTs.
+
+1997-12-01  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4i.
+
+1997-11-25  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-site.el: Adaptation for XEmacs-20.3.
+	(font-lock-mode-hook): Adding of `turn-on-lazy-lock' commented.
+  	The improvement of lazy-lock in XEmacs-20.3 has been unfortunately
+ 	given a different name: lazy-shot.
+
+	* x-symbol-hooks.el (x-symbol-fontify): Handle lazy-shot.
+
+	* x-symbol-xmas-20.3.el: New file.
+	(x-symbol-tex-font-lock-pre-match): Make to work with old
+ 	font-lock.
+	(x-symbol-window-width): Fixed `window-width'.
+
+	* x-symbol.el: Fix char-int confoundance disease.
+	(x-symbol-esc-char): Use character instead number.
+	(x-symbol-parse-buffer-using-atree): Use `equal' instead `='.
+	(x-symbol-init-menu-end): Use `characterp' instead `numberp'.
+	(x-symbol-init-tables): Check `numberp' for extended charset.
+	(x-symbol-display-info): Do nothing when point is at the eob.
+	(x-symbol-mouse-yank-function): Do not use obsolete functions
+ 	`preceding-char' and `following-char'.
+	(x-symbol-default-mouse-track-normalize-point-function): Ditto.
+	(x-symbol-pre-command-hook): Ditto.
+	(x-symbol-post-command-hook): Ditto.
+	(x-symbol-input-by-token): Use character space instead number 32.
+
+1997-11-19  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-image.el (x-symbol-image-buffer-extents): Made
+ 	permanent-local, otherwise VC registration would put a second
+	glyph behind all image insertion commands.
+
+	* x-symbol.el (x-symbol-init-exec): Changed text in warnings.
+
+1997-11-12  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4h.
+
+1997-11-05  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-site.el: Adaptation for XEmacs-19.16.
+
+	* x-symbol-xmas-19.15.el: Also used for XEmacs-19.16.
+	(x-symbol-window-width):  Argument WIN is now optional.
+
+	* x-symbol-xmas-19.14.el (x-symbol-window-width): Ditto.
+
+	* x-symbol-xmas-19.13.el (x-symbol-window-width): Ditto.
+
+	* x-symbol-xmas-20.2.el (x-symbol-window-width): Ditto.
+
+	* x-symbol-xmas-20.0.el (x-symbol-window-width): Ditto.
+
+1997-10-15  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4g.
+
+1997-10-10  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-context-default-table): Changed CONTEXT
+	for xsymbol `simequal' from "<<" to "~_"-aggressive.
+
+	* x-symbol-image.el: RCS:2.4.
+	(x-symbol-image-cache-directories): Allow new form for temporary
+ 	image cache files.  Use it in default value.
+	(x-symbol-image-temp-name): New variable.
+	(x-symbol-image-parse-region): Use it.
+	(x-symbol-image-create-glyph): New optional argument.
+	(x-symbol-image-cache-name): New argument.
+
+1997-09-29  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4f.
+
+1997-09-26  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-image.el: New file, RCS:2.3.  Package displays glyphs
+ 	at the end of image insertion commands, read docstring of
+ 	`turn-on-x-symbol-image-mode' for details.
+
+	* x-symbol-hooks.el (turn-on-x-symbol-image-mode): New autoload.
+
+	* x-symbol-site.el (x-symbol-site-turn-on-image): New function.
+	(find-file-hooks): Use it.
+
+1997-08-14  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-tex-font-lock-override): New variable.
+	(x-symbol-tex-font-lock-complex-keywords): Use it.
+	(x-symbol-tex-font-lock-keywords): Use it.
+	(x-symbol-default-mouse-track-normalize-point-function): Use
+	`boundp' for default value.
+
+1997-07-14  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4e.
+
+1997-07-07  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-xmas-20.2.el (x-symbol-char-regexp): Set to nil.
+  	Workaround for XEmacs-20.2 bug in `string-match'.
+
+	* x-symbol.el (x-symbol-char-regexp): Allow value nil.  
+	(x-symbol-tex-font-lock-keywords): Ditto.
+	(x-symbol-init-tables): Ditto.
+	(x-symbol-mouse-yank-function): Ditto.
+	(x-symbol-pre-command-hook): Ditto.
+	(x-symbol-post-command-hook): Ditto.
+	(x-symbol-pre-command-hook): Use `equal' instead `='.
+	(x-symbol-post-command-hook): Ditto.
+
+	(x-symbol-highlight-echo): New function.
+	(x-symbol-grid-highlight): Use it => info for the character under
+ 	mouse always uses the current token language.
+	(x-symbol-setup-alist): As it was before v2.4a, use automatic
+ 	conversion for iso characters.  Reason: validation with sgmls does
+ 	not work with iso characters.
+	(x-symbol-invisible-display-table): Value is nil when not running
+ 	under X.
+	(x-symbol-tex-font-lock-keywords): Ditto.
+	(x-symbol-init-tables): No conversion of symbol characters when
+ 	not running under X.
+
+	* x-symbol-site.el (character-set-property): Use latin1 characters
+ 	even when not running under X.
+
+1997-06-30  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4d.
+
+1997-06-26  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-pre-command-hook): Prevent it to be run
+ 	twice when pressing a key which runs a keyboard macro.
+	(x-symbol-post-command-hook): Ditto.
+	(x-symbol-insert-for-token): New function.
+	(x-symbol-input-by-token): Use it.
+	(x-symbol-setup-alist): Delete entry for _region_ file.
+	(x-symbol-init-context-tables): Made interactive.
+
+	* x-symbol-site.el (x-symbol-math-insert): New function.
+	(LaTeX-math-insert-function): Use it.
+	(x-symbol-init-auctex-region): New function.
+	(TeX-region-hook): Use it.
+
+1997-06-10  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4c.
+
+1997-06-09  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-xmas-20.2.el: New file.
+	(x-symbol-tex-font-lock-pre-match): Make to work with old
+	font-lock.
+	(x-symbol-window-width): Fixed `window-width'.
+
+	* x-symbol-site.el: Code for mouse selection is stable now.
+	(x-symbol-default-mouse-track-normalize-point): Deletia.
+	(x-symbol-site-init-mouse-selection): Deletia.
+	(x-symbol-load-hook): Deletia.
+
+	* x-symbol.el: Use code from x-symbol-site.el,v 2.4a:
+	(x-symbol-default-mouse-track-normalize-point-function): New
+	configuration variable.
+	(x-symbol-default-mouse-track-normalize-point-function): New
+	function, used as value for new variable in XEmacs-20.2
+	`default-mouse-track-normalize-point-function'. 
+
+	* x-symbol-xmas-19.13.el: Use code from x-symbol-site.el,v 2.4a:
+	(default-mouse-track-normalize-point-function): New variable,
+ 	introduced with XEmacs-20.2.
+	(x-symbol-xmas-init-mouse-selection): New function.
+	(x-symbol-load-hook): Use it.
+
+	* x-symbol-xmas-19.14.el: Use code from x-symbol-site.el,v 2.4a:
+	(default-mouse-track-normalize-point-function): New variable,
+ 	introduced with XEmacs-20.2.
+	(x-symbol-xmas-init-mouse-selection): New function.
+	(x-symbol-load-hook): Use it.
+
+	* x-symbol-xmas-19.15.el: Use code from x-symbol-site.el,v 2.4a:
+	(default-mouse-track-normalize-point-function): New variable,
+ 	introduced with XEmacs-20.2.
+	(x-symbol-xmas-init-mouse-selection): New function.
+	(x-symbol-load-hook): Use it.
+
+	* x-symbol-xmas-20.0.el: Use code from x-symbol-site.el,v 2.4a:
+	(default-mouse-track-normalize-point-function): New variable,
+ 	introduced with XEmacs-20.2.
+	(x-symbol-xmas-init-mouse-selection): New function.
+	(x-symbol-load-hook): Use it.
+
+1997-05-12  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4b.
+
+1997-05-05  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-format-info): Consider value `prefix' for
+	`x-symbol-input-by-context'.
+	(x-symbol-modify-key): Moved to x-symbol-hooks.
+	(x-symbol-rotate-key): Ditto.
+
+	* x-symbol-hooks.el (x-symbol-modify-key): Moved from x-symbol.el.
+  	Check whether symbol or iso characters are "allowed".
+	(x-symbol-rotate-key): Ditto.
+	(x-symbol-insert-for-context): New autoload.
+	(x-symbol-modify-for-context): Ditto.
+
+1997-04-29  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Version 2.4a.
+
+1997-04-28  Christoph Wedler  <wedler@fmi.uni-passau.de>
+	
+	* x-symbol.el: Less verbose headers in all files.
+	
+	* x-symbol.el (x-symbol-setup-alist): Do not convert iso
+ 	characters to SGML entities when saving a file.  Add extra
+ 	treatment for AucTeX's _region_ files -> simpler INSTALL.
+	(x-symbol-class-string-alist): Add cons for pseudo class ISO.
+	(x-symbol-init-tables): Add pseudo class ISO to iso characters.
+	(x-symbol-context-default-table): "/0" inserts \emptyset.
+	(x-symbol-grid): Bind `temp-buffer-shrink-to-fit' to nil.
+	(x-symbol-help): Ditto.
+	(x-symbol-modify-key): New command.
+	(x-symbol-rotate-key): New command.
+	(x-symbol-input-by-context-pre): Use them.
+	(x-symbol-insert-for-context): New optional argument IGNORE.
+	(x-symbol-modify-for-context): Ditto.
+
+	* x-symbol-hooks.el (options): Slightly different TEXT in options
+ 	for `x-symbol-symbols-in-buffer' and `x-symbol-iso-in-buffer'.
+
+	* x-symbol-site.el (html-auto-sgml-entity-conversion): Set to nil
+ 	= the right way not to load iso-sgml with XEmacs-19.15.
+	([(control ?\,)]): Give binding as `x-symbol-modify-key',
+ 	commented.
+	([(control ?\.)]): Give binding as `x-symbol-rotate-key',
+ 	commented.
+	(x-symbol-input-by-context): Do not use "@" and "!" as special
+ 	keys without prefix 0, commented.
+	(fast-lock-save-faces): Do not include `x-symbol-iso-face'.
+	(x-symbol-default-mouse-track-normalize-point): New function.
+	Fixes problem with mouse selection.
+	(x-symbol-site-init-mouse-selection): New function.
+	(x-symbol-load-hook): Use it.
+
+	* x-symbol-xmas-19.15.el: New file.
+	(x-symbol-tex-font-lock-pre-match): Make to work with old
+	font-lock.
+	(x-symbol-window-width): Fixed `window-width'.
+
+1997-03-10  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: x-symbol v2.4 (v2.3k) is released.
+
+1997-03-06  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: Moved initial comment sections to separate files.
+	(x-symbol-show-temp-buffer): Deletia.
+	(x-symbol-temp-buffer-show-function): New variable.
+	(x-symbol-grid): Use it.
+	(x-symbol-help): Use it.  Don't display Misc stuff.
+	(x-symbol-help-mapper): Simpler.  Don't display Misc stuff.
+	(x-symbol-init-menu-end): Don't offer help for Misc stuff.
+	(x-symbol-init-tables): Offer GRID in main menus only.
+	(x-symbol-help-misc): Deletia.
+	(x-symbol-options-menu-filter): Use `local-variable-p' with third
+ 	arg t instead `local-variable-if-set-p' (XEmacs-19.13).
+	(x-symbol-setup-buffer): Is now interactive for using it in a
+ 	menu, requested by Sudeep Kumar Palat <Sudeep.Palat@item.ntnu.no>.
+	(x-symbol-post-command-hook): Do not display info for character
+ 	under point if the echo area is not empty, suggested by
+	Sudeep Kumar Palat <Sudeep.Palat@item.ntnu.no>.
+	(x-symbol-init-font-lock): Use `append' instead of `nconc' when
+ 	adding x-symbol keywords.
+	(x-symbol-set-font-lock-keywords-function): New variable.
+	(x-symbol-reset-font-lock-keywords): New function.
+	(x-symbol-convert-interactive): Use it.
+
+	* x-symbol-hooks.el (x-symbol-find-file-hook): Use it.  Call
+ 	`font-lock-fontify-buffer' if buffer is already fontified by a
+ 	function in a mode hook, but not by lazy-lock.
+	(x-symbol-setup-buffer): Define autoload as interactive.
+	(x-symbol-fontify): Rewritten to work with fast-lock.
+	(x-symbol-reset-font-lock-keywords): New autoload.
+	
+	* x-symbol-xmas-20.0.el (x-symbol-show-temp-buffer): New function.
+  	It is XEmacs-19.14 version of `show-temp-buffer-in-current-frame'.
+  	We cannot use this function for XEmacs-19.13.
+	(x-symbol-temp-buffer-show-function): Use it as value.
+
+	* x-symbol-site.el: Only add `fume-add-menubar-entry' to
+	`find-file-hooks' if it is already a member.
+	(x-symbol-about): New command.
+	(lazy-lock): Don't require it anymore.
+	(font-lock): Require it, otherwise `font-lock-auto-fontify' = t
+ 	has no effect.
+	(fast-lock-save-faces): Set to make x-symbol work with fast-lock.
+	(tex-mode-hook): No APPEND with `add-hook'.
+	(TeX-mode-hook): Ditto.
+	(bibtex-mode-hook): Ditto.
+	(sgml-mode-hook): Ditto.
+	(html-mode-hook): Ditto.
+	(x-symbol-site-tex-font-lock-keywords): New variable, commented.
+	(x-symbol-font-lock-keywords-variables): Use it, commented.
+	(x-symbol-site-setup-tex): New function, commented.
+	(tex-mode-hook): Use it, commented.
+	(TeX-mode-hook): Use it, commented.
+
+	* x-symbol-test.el Do not distribute it anymore.
+
+1997-02-27  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-site.el: Drop all this [before/after] stuff.
+	((featurep 'x-symbol)): Warn if package x-symbol has been loaded.
+	(words-include-escapes): Set to t.
+	(x-symbol-iso-font): Commented.
+
+	* x-symbol-xmas-19.13.el (x-symbol-compose-key): Use old keysym.
+
+	* x-symbol-xmas-19.14.el (x-symbol-compose-key): Use old keysym.
+
+	* x-symbol-xmas-20.0.el: Renamed from x-symbol-xmas-20.1.el
+	(x-symbol-window-width): New function, bug fix for `window-width'.
+
+	* x-symbol-hooks.el (x-symbol-compose-key): Initial value is
+	'(shift multi-key) = keysym change in XEmacs-20.0.
+	(ctl-x-map): New keybinding for `x-symbol-grid'.
+	(x-symbol-load-hook): Initial value is nil.
+
+	* x-symbol.el: Call `x-symbol-init-font-lock' directly, not as a
+ 	member of `x-symbol-load-hook'.  If you don't like this
+ 	initialization, just set `x-symbol-font-lock-keywords-variables'
+ 	to nil.
+	(x-symbol-grid-char-width): New user option.
+	(x-symbol-show-temp-buffer): New function.  It is XEmacs-19.14
+ 	version of `show-temp-buffer-in-current-frame'.
+	(x-symbol-grid): Use both.  Changed for XEmacs-20.0.  Changed
+ 	binding, using `x-symbol-compose-key'.
+	(x-symbol-menu-start): Different names of submenus.
+	(x-symbol-input-by-token): No extra meaning for value `abbrev'.
+	(x-symbol-input-punctuation-regexp): Deletia.
+	(x-symbol-input-by-token): Changed accordingly.
+	(x-symbol-context-default-table): Changed.
+	(x-symbol-input-by-context): Additional meaning for value
+ 	`prefix'.
+	(x-symbol-post-command-hook): Allow its value.
+	(x-symbol-insert-by-hook): `undo' and `unexpand-abbrev' restore
+ 	character for `x-symbol-modify-key' and `x-symbol-rotate-key'.
+	(x-symbol-exec-checksum-file): New configuration variable.
+	(x-symbol-checksum): New function.
+	(x-symbol-init-tables): Use it.
+	(x-symbol-init-exec): Use it.  Delete optional argument EXEC-OK-P.
+  	Additional arguments ALIST and CHECKSUM.
+
+	* x-symbol-create.el (x-symbol-create-exec): Arguments of
+ 	`x-symbol-init-exec' have been changed.
+	(x-symbol-create-all-exec): Create checksum file.
+
+1997-02-27  Alastair Burt  <burt@dfki.uni-sb.de>
+
+	* x-symbol-hooks.el (x-symbol-find-file-hook): No fontification.
+	Would be induced by `turn-on-font-lock' in a mode hook.
+
+1997-02-08  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-site.el: Be more specific with versions of XEmacs.
+	(x-symbol-user-table): Do not suggest to define TeX macro \? anymore.
+	(x-compose): Uncommented: require package x-compose, use its map.
+	(x-symbol-site-init-gtex-input): New function, uncommented.
+	(x-symbol-load-hook): Use it, uncommented.
+
+	* x-symbol-hooks.el (x-symbol-variable-interactive): New autoload.
+	(x-symbol-define-user-options): New function.
+	(x-symbol-symbol-in-buffer): Use it.
+	(x-symbol-iso-in-buffer): Ditto.
+	(x-symbol-token-language): Ditto.
+
+	* x-symbol.el (x-symbol-input-by-token): Use new function
+	`x-symbol-define-user-options' instead simple `put'.
+	(x-symbol-input-by-context): Ditto.
+	(x-symbol-grid-small-display): Ditto.
+	(x-symbol-help-small-display): Ditto.
+	(x-symbol-grid-temp-display): Ditto.
+	(x-symbol-help-temp-display): Ditto.
+	(x-symbol-show-info): Ditto.
+	(x-symbol-grid-nl-p): Deletia.
+	(x-symbol-class-string-alist): Add a pseudo TeX class.
+	(x-symbol-menu-start): Use ACTIVE on submenu "Convert".
+	
+	(x-symbol-tex-font-lock-simple-regexp): Do not match
+ 	super-/subscripts with braces anymore.
+	(x-symbol-tex-font-lock-limit-regexp): New configuration variable.
+	(x-symbol-tex-font-lock-pre-match): Ditto.
+	(x-symbol-tex-font-lock-complex-keywords): Ditto.
+	(x-symbol-tex-font-lock-keywords): Use it.  Changed.
+	(x-symbol-default-table): Define new symbol for \textbackslash.
+	(x-symbol-context-default-table): Make various CONTEXTs
+ 	non-aggressive.  Define CONTEXT for \textbackslash.
+
+	(x-symbol-tex-font-lock-match): New function.
+	(x-symbol-tex-font-lock-match-sub): Ditto.
+	(x-symbol-tex-font-lock-match-sup): Ditto.
+	(x-symbol-variable-interactive): New function.
+	(x-symbol-grid): Changed.  Would create a nice grid even if a
+	character is wider than `x-symbol-grid-tab-width'...but XEmacs'
+	`current-column' does not work as expected.
+
+	(x-symbol-input-by-token): Be more aggressive.
+	(x-symbol-language-value): Display correct warning.
+	(x-symbol-alist-to-atree): Additional optional argument ATREE.
+	(x-symbol-init-tables): Allow iso character without KEYS.
+	(x-symbol-get-insert-command): Characters are not numbers in
+ 	XEmacs-20.x anymore.
+	(x-symbol-setup-minibuffer): Do not use the two most aggressive
+ 	modes for input methods TOKEN and CONTEXT.
+	(x-symbol-format-info): Additional optional argument
+ 	DEFAULT-CLASSES.
+	(x-symbol-grid-highlight): Provide default classes.
+	(x-symbol-display-info): Changed. `x-symbol-format-info' might
+	return nil.
+
+	* x-symbol-xmas-19.14.el (x-symbol-tex-font-lock-pre-match):
+ 	Define hack for complex super-/subscripts with old font-lock.
+
+	* x-symbol-xmas-20.1.el: New file.
+
+1997-02-08  Sudeep Kumar Palat  <Sudeep.Palat@item.ntnu.no>
+
+	* x-symbol-site.el: Bug fixes of commented code, that is:
+	(x-symbol-sym-sub-font): Charset-registry is not ADOBE anymore.
+	(x-symbol-event-point): Deletia.  Would break selection in
+ 	*Completions* and other buffers with button2.
+	(x-symbol-site-init-event-point): Deletia.
+	(x-symbol-load-hook): Do not add it to hook.
+
+1996-12-20  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-iso-table): Use \mathordmasculine instead
+ 	of \mathmasculine.
+	(x-symbol-default-table): Add more iso character with interesting
+ 	pseudo TeX classes or which are used with input method CONTEXT.
+	(x-symbol-class-string-alist): Add two pseudo TeX classes.
+	(x-symbol-key-classes-alist): Add element for new submenu.
+	(x-symbol-key-submenu-alist): Ditto.
+	(x-symbol-context-default-table): Enhanced.
+	(x-symbol-sym-font): xsymbol font does not have foundry ADOBE.
+	(x-symbol-sym-sup-font): Ditto.
+	(x-symbol-sym-sub-font): Ditto.
+	(x-symbol-invisible-face): New face.
+	(x-symbol-invisible-display-table): New internal variable.
+	(x-symbol-tex-font-lock-keywords): Use invisible face.
+
+	* x-symbol-sgml.el (x-symbol-sgml-iso-table): Enhanced.
+
+	* x-symbol-site.el (html-mode-hook): Add hook for buffer setup.
+	(global-map): Also define key SunF37 (F12).
+	(x-symbol-site-init-keys): Ditto.
+
+	* x-symbol-xmas-19.13.el (get-char-property): With XEmacs-19.13,
+ 	use `get-text-property' instead.
+	(x-symbol-tex-font-lock-keywords): Only use simple form which is
+	allowed with the older font-lock version.
+	(x-symbol-sym-sup-font): Needed to set
+	`x-symbol-tex-font-lock-keywords'.
+	(x-symbol-sym-sub-font): Ditto.
+	(x-symbol-iso-sup-font): Ditto.
+	(x-symbol-iso-sub-font): Ditto.
+	(x-symbol-esc-char): Ditto.
+	(x-symbol-char-regexp): Ditto.
+	(x-symbol-tex-font-lock-simple-regexp): Ditto.
+
+1996-12-20  Frederic Devernay  <devernay@eire.inria.fr>
+
+	* x-symbol-create.el (x-symbol-create-makefile-pre): Use default
+	flex options instead -Cfe.
+
+1996-12-12  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: New concept "Token language":
+	(x-symbol-tex): New configuration variable.  The property list of
+ 	this feature provides the default token language "TeX Macro".
+	(x-symbol-setup-alist): Also sets token language and controls the
+ 	X-symbol menu.  Additional entry for html/sgml files.
+	(x-symbol-char-regexp): Be more specific.
+	(x-symbol-tex-font-lock-simple-regexp): New configuration
+ 	variable.
+	(x-symbol-tex-font-lock-keywords): Use it.
+	(x-symbol-tex-token-esc): New configuration variable.
+	(x-symbol-menu-start): Extended.
+	((load eval)): Require package for default token language.
+
+	(x-symbol-init-tables): TeX Macro = (get CMD 'x-symbol-tex).
+	(x-symbol-init-font-lock): Also handles pairs in
+ 	`x-symbol-font-lock-keywords-variables'.
+	(x-symbol-add-token-language): New function.
+	(x-symbol-language-value): New function.
+	(x-symbol-setup-buffer): Also set token language.
+	(x-symbol-setup-minibuffer): Also inherit token language.
+	(x-symbol-convert-menu-filter): Also show current token language.
+	(x-symbol-display-info): Ditto.
+	(x-symbol-grid-highlight): Ditto.
+	(x-symbol-grid): Ditto.
+	(x-symbol-help): Ditto.
+	(x-symbol-help-mapper): Ditto.
+	(x-symbol-self-insert-command): Ditto.
+	(x-symbol-highlight-menu): Ditto.
+	(x-symbol-format-info): Ditto.
+
+	* x-symbol.el: All token language dependent variables and
+ 	functions start with x-symbol-LANGUAGE- instead x-symbol-:
+	(x-symbol-tex-font-lock-keywords): Renamed.
+	(x-symbol-tex-ascii-class-alist): Ditto.
+	(x-symbol-tex-sym2-name): Ditto.
+	(x-symbol-tex-iso2-name): Ditto.
+	(x-symbol-tex-2sym-name): Ditto.
+	(x-symbol-tex-2iso-name): Ditto.
+	(x-symbol-tex-sym2-exec): Ditto.
+	(x-symbol-tex-iso2-exec): Ditto.
+	(x-symbol-tex-2sym-exec): Ditto.
+	(x-symbol-tex-2iso-exec): Ditto.
+	(x-symbol-tex-sym2-alist): Ditto.
+	(x-symbol-tex-2sym-alist): Ditto.
+	(x-symbol-tex-iso2-alist): Ditto.
+	(x-symbol-tex-2iso-alist): Ditto.
+
+	(x-symbol-call-token2): Renamed.  Additional arguments for token
+ 	language dependent values.
+	(x-symbol-all-token2): Renamed.  Consider token language.
+	(x-symbol-call-2token): Additional arguments for token language
+ 	dependent values.
+	(x-symbol-all-2token): Renamed.  Consider token language.
+	(x-symbol-convert-interactive): Different meaning of arguments.
+  	Changed to be more token language independent.  Set
+ 	`x-symbol-conversion-action' here.
+	(x-symbol-convert-2token): Renamed from `x-symbol-convert-2tex'.
+	(x-symbol-convert-token2): Renamed from `x-symbol-convert-tex2'.
+
+	* x-symbol-hooks.el (x-symbol-token-language): New buffer local
+	user option.
+	(x-symbol-find-file-hook): Use new names.
+	(x-symbol-write-file-data-hook): Ditto.
+	(x-symbol-write-file-hook): Ditto.
+	(x-symbol-write-file-hook): Re-fontify buffer if
+ 	`x-symbol-auto-conversion-method' has value `slowest'.
+	(x-symbol-iso-gnet2iso): Delete `autoload'.
+	(x-symbol-iso-iso2tex): Ditto.
+	(x-symbol-iso-tex2iso): Ditto.
+	(x-symbol-iso-gtex2iso): Ditto.
+	(x-symbol-iso-iso2gtex): Ditto.
+
+	* x-symbol-create.el (x-symbol-create-all-exec): Use new names.
+
+	* x-symbol-sgml.el: New file, provides token language "SGML entity". 
+
+	* x-symbol-gtex.el: Renamed from x-symbol-iso.el, provides fake
+	token language "German TeX Macro".
+	(x-symbol-gtex-iso-table): Changed.  KEY is now keysym.
+	(x-symbol-gtex-2iso-atree): New internal variable.
+	(x-symbol-gtex-gtex2iso): Works by setting the token language.
+	(x-symbol-gtex-iso2gtex): Ditto.
+	(x-symbol-iso-init-tables): Deletia.  Use `x-symbol-init-iso-tables'.
+
+	* x-symbol-site.el (sgml-mode-hook): Add hook for buffer setup.
+	(iso-sgml): Provide feature to inhibit loading package iso-sgml.
+	(x-symbol-gtex-gtex2iso): Define `autoload' here.
+	(x-symbol-gtex-tex2iso): Ditto.
+	(x-symbol-gtex-gnet2iso): Ditto.
+	(x-symbol-gtex-iso2gtex): Ditto.
+	(x-symbol-gtex-iso2tex): Ditto.
+	(x-symbol-site-init-languages): New function.
+	(x-symbol-load-hook): Add it to hook.
+
+	* x-symbol.el (x-symbol-rgb-buffer-size): Deletia.
+	(x-symbol-rgb-buffer-first-property): New internal variable.  Use
+ 	instead of `x-symbol-rgb-buffer-size', it is more accurate.
+	(x-symbol-help-language): New internal variable.
+	(x-symbol-buffer-property-limit): New internal configuration
+ 	variable.
+	(x-symbol-rgb-buffer-first-property): New function.
+	(x-symbol-shrink-grid-buffer): Use it instead of `buffer-size'.
+	(x-symbol-replace-grid-buffer): Ditto.
+	(x-symbol-grid): Use old *Help* buffer contents if it is
+ 	reasonable to do so, new optional argument forces Emacs to create
+ 	a new one.
+	(x-symbol-self-insert-command): Different meaning of prefix
+ 	argument.
+	(x-symbol-highlight-menu): Consider it.
+
+1996-12-06  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el: New input methods TOKEN and CONTEXT.
+	(x-symbol-input-by-token): New user option.
+	(x-symbol-input-by-context): Ditto.
+	(x-symbol-rotate-key): Ditto.
+	(x-symbol-modify-key): Ditto.
+	(x-symbol-input-punctuation-regexp): Ditto.
+	(x-symbol-tex-input-ignore-regexp): New configuration variable.
+	(x-symbol-context-max-chars): Ditto.
+	(x-symbol-input-forcing-commands): Ditto.
+	(x-symbol-context-user-table): Ditto.
+	(x-symbol-context-default-table): Ditto.
+	(x-symbol-mouse-yank-function): Ditto.
+	(x-symbol-tex-2sym-atree): New internal variable.
+	(x-symbol-tex-2iso-atree): Ditto.
+	(x-symbol-cxt2cmd-atree): Ditto.
+	(x-symbol-xsym2cmd-alist): Ditto.
+	(x-symbol-tex-length): Deletia.
+	(x-symbol-info-mouse-format): May be a pair now, for CONTEXT.
+	(x-symbol-info-point-format): Ditto.
+
+	(x-symbol-add-to-atree): New function.
+	(x-symbol-alist-to-atree): New function.
+	(x-symbol-parse-buffer-using-atree): New function.
+	(x-symbol-get-insert-command): New function.
+	(x-symbol-process-input-ring): New function.
+	(x-symbol-init-iso-tables): New function.
+	(x-symbol-init-tables): Use it.  Set entry in display table
+ 	according to `x-symbol-char-regexp'.
+	(x-symbol-init-context-tables): New function.
+	(x-symbol-init-tables): Use it.  Set atree for input method TOKEN.
+	(x-symbol-mouse-yank-function): New function.
+	(x-symbol-pre-command-hook): Extended for input methods TOKEN and
+ 	CONTEXT.
+	(x-symbol-post-command-hook): Extended for input method CONTEXT.
+	(x-symbol-insert-by-hook): New function.
+	(x-symbol-input-by-token): New function.
+	(x-symbol-input-by-context-pre): New function.
+	(x-symbol-input-by-context-post): New function.
+	(x-symbol-insert-for-context): New function.
+	(x-symbol-modify-for-context): New function.
+	(x-symbol-get-valid-context-char): New function.
+	
+	(x-symbol-format-info): New function.
+	(x-symbol-display-info): Use it.
+	(x-symbol-grid-highlight): Use it.
+	(x-symbol-heading-insert): Renamed from `x-symbol-class-insert',
+ 	set `x-symbol-heading' extent property.
+	(x-symbol-grid): Use new name.
+	(x-symbol-help-mapper): Use new name.
+	(x-symbol-highlight-menu): Renamed extent property for heading.
+
+1996-11-21  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el ((find-face 'x-symbol-sym-face)): No init if face
+ 	exists.
+	((find-face 'x-symbol-sym-sup-face)): Ditto.
+	((find-face 'x-symbol-sym-sub-face)): Ditto.
+	((find-face 'x-symbol-iso-face)): Ditto.
+	((find-face 'x-symbol-iso-sup-face)): Ditto.
+	((find-face 'x-symbol-iso-sub-face)): Ditto.
+	(x-symbol-init-tables):
+	(x-symbol-font-lock-simple-regexp): New configuration variable.
+	(x-symbol-font-lock-keywords): Use it.
+
+1996-11-21  Frederic Devernay  <devernay@eire.inria.fr>
+
+	* x-symbol.el (x-symbol-init-tables): Workaround for XEmacs bug:
+ 	use syntax class "escape" instead of "character quote".  Symbol
+	for \exists would break fontification of math regions.
+
+1996-11-14  Christoph Wedler  <wedler@fmi.uni-passau.de>
+ 
+	* x-symbol.el (x-symbol-call-tex2): Allow value nil for
+ 	`x-symbol-exec-threshold'.
+	(x-symbol-all-tex2): Ditto.
+	(x-symbol-call-2tex): Ditto.
+	(x-symbol-all-2tex): Ditto.
+	(x-symbol-store-location): Use markers if no executables are used.
+	(x-symbol-fetch-location): Ditto.
+	(x-symbol-safe-exec-threshold): New user option.
+
+	* x-symbol-hooks.el (x-symbol-find-file-hook): Use new user
+	option `x-symbol-safe-exec-threshold'.
+	(x-symbol-write-file-data-hook): Ditto.
+	(x-symbol-write-file-hook): Do not set point, mark, etc anymore.
+	Do not run hooks in `x-symbol-after-conversion-hook'.
+
+1996-11-14  Frederic Devernay  <devernay@eire.inria.fr>
+
+	* x-symbol-hooks.el (x-symbol-write-file-hook): Do not call
+	`x-symbol-fontify'.
+
+1996-11-11  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* fonts/xsymb14.bdf: Use encoding 109 for \cdot, not for \mu.
+	
+	* fonts/xsymb12.bdf: Ditto.
+	
+	* x-symbol-hooks.el: New symbols/iso scheme:
+	(x-symbol-auto-cvt): Deletia.
+	(x-symbol-show-symbol): Deletia.
+	(x-symbol-symbols-in-buffer): New buffer-local user option.
+	(x-symbol-iso-in-buffer): Ditto.
+	(x-symbol-auto-conversion-method): Renamed from
+ 	`x-symbol-conversion'.
+	(x-symbol-find-file-hook): Use new symbol/iso scheme.
+	(x-symbol-write-file-data-hook): Ditto.
+	(x-symbol-write-file-hook): Ditto.
+	
+	* x-symbol.el: Use new symbols/iso scheme:
+	(x-symbol-setup-alist): .bib included.  Use new symbol/iso scheme.
+	(x-symbol-setup-buffer): Renamed from `x-symbol-setup-latex'.
+  	Handles non-local `current-menubar'.  Do not set user options if
+ 	they are already buffer-local.  Do not set abbrev-mode.  Use new
+ 	symbol/iso scheme.
+	(x-symbol-pre-command-hook): Use new symbols/iso scheme.  Use
+ 	`following-char' and `preceding-char'.
+	(x-symbol-post-command-hook): Ditto.
+	(x-symbol-setup-minibuffer): Use new symbol/iso scheme.
+	(x-symbol-self-insert-command): Ditto.
+	(x-symbol-all-tex2): Ditto.
+	(x-symbol-all-2tex): Ditto.
+	(x-symbol-convert-interactive): Ditto.
+	(x-symbol-highlight-menu): Ditto.
+
+	* x-symbol.el: Don't mix iso and symbol characters.
+	(x-symbol-default-table): Use nil instead of keysyms for iso
+	characters. \mu is now represented by an iso character.  \cdot is
+	now represented by a symbol character.  Deleted key aliases.
+	(x-symbol-iso-table): Convert now all encodings >= 160, added
+	nobreakspace and hyphen.  Bug fix: use oslash instead of ooblique.
+	(x-symbol-init-character): Deletia.
+	(x-symbol-init-tables): Total rewrite.
+	(x-symbol-help-mapper): Do not use x-symbol-iso property anymore.
+	(x-symbol-all-tex2): First convert to iso, then to symbol.
+
+	* x-symbol.el: New grid-buffer scheme:
+	(x-symbol-shrink-grid-buffer): Deletia.
+	(x-symbol-grid-small-display): New user option.
+	(x-symbol-help-small-display): Ditto.
+	(x-symbol-replace-grid-buffer): Deletia.
+	(x-symbol-grid-temp-display): New user option.
+	(x-symbol-help-temp-display): Ditto.
+	(x-symbol-show-info): Drop handling (via non-nil) of mouse echo.
+	(x-symbol-grid-highlight): Don't use `x-symbol-show-info'.
+	(x-symbol-class-insert): Ditto.
+	(x-symbol-post-command-hook): `x-symbol-show-info' needs just to
+	be non-nil.
+	(x-symbol-grid): Use new grid-buffer scheme.
+	(x-symbol-help): Ditto.
+	(x-symbol-shrink-grid-buffer): Ditto.
+	(x-symbol-pre-replace-grid-buffer): Ditto.
+
+	* x-symbol.el: New font/face names:
+	(x-symbol-sym-font): Renamed from `x-symbol-font'.
+	(x-symbol-sym-sup-font): Renamed from `x-symbol-sup-font'.
+	(x-symbol-sym-sub-font): Renamed from `x-symbol-sub-font'.
+	(x-symbol-sym-face): Renamed from `x-symbol-face'.
+	(x-symbol-sym-sup-face): Renamed from `x-symbol-sup-face'.
+	(x-symbol-sym-sub-face): Renamed from `x-symbol-sub-face'.
+	(x-symbol-iso-sup-face): Renamed from `x-symbol-norm-sup-face'.
+	(x-symbol-iso-sub-face): Renamed from `x-symbol-norm-sub-face'.
+	(x-symbol-iso-font): Renamed from `x-symbol-norm-font'.
+	(x-symbol-iso-sup-font): Renamed from `x-symbol-norm-sup-font'.
+	(x-symbol-iso-sub-font): Renamed from `x-symbol-norm-sub-font'.
+	(x-symbol-extended-charset-p): Use new names.
+	(x-symbol-font-lock-keywords): Ditto.
+	(x-symbol-init-tables): Ditto.
+	(x-symbol-help-insert): Ditto.
+	
+	* x-symbol.el (x-symbol-convert-menu-filter): Changed text.
+  	Renamed from `x-symbol-menu-filter
+	(x-symbol-options-menu-filter): New function, requires user
+ 	options to have a `x-symbol-options' symbol property.
+	(x-symbol-menu-start): Changed.  Use menu filters.
+	(x-symbol-init-menu-end): Changed text in menu.
+	(x-symbol-highlight-menu): Changed text.
+	(x-symbol-pre-abbrev-expand-hook): Deletia.
+	(pre-abbrev-expand-hook): Don't add it.
+	(x-symbol-convert-interactive): Drop arguments SYMBOL-ALIST and
+ 	ISO-ALIST.
+	(x-symbol-convert-2tex): Ditto.
+	(x-symbol-convert-tex2): Ditto.
+
+	* x-symbol-iso.el (x-symbol-iso-gtex2iso): Keep track with other
+	conversion sequence in `x-symbol-all-tex2'.
+	(x-symbol-iso-tex2iso): Ditto.
+	(x-symbol-iso-gnet2iso): Ditto.
+	(x-symbol-iso-gtex2iso): Drop arguments SYMBOL-ALIST and
+ 	ISO-ALIST.
+	(x-symbol-iso-iso2gtex): Ditto.
+	
+	* x-symbol-site.el (x-symbol-iso-font): Use new name.
+	(bibtex-mode-hook): Use function `x-symbol-setup-buffer'.
+	(tex-mode-hook): Use new name `x-symbol-setup-buffer'.
+
+1996-11-07  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* fonts/xsymb14.bdf: Changed encoding 197 (\oplus)
+
+	* x-symbol-hooks.el (x-symbol-compose-key): New configuration
+	variable. 
+	(global-map): Use it.
+
+	* x-symbol.el (x-symbol-init-menu-end): Use `x-symbol-compose-key'.
+	(global-map): Ditto.
+	((vector x-symbol-compose-key)): Ditto.
+	(x-symbol-help): Ditto.
+	(x-symbol-setup-alist): Enhanced for jka-compr.
+	(x-symbol-grid): Moved XEmacs bug workaround to body of new function
+	`x-symbol-window-width', use this function here.
+
+	* x-symbol-xmas-19.14.el: Renamed from x-symbol-svo14.el.
+	(x-symbol-window-width): New function, XEmacs bug workaround,
+	moved from `x-symbol-grid'.
+
+	* x-symbol-xmas-19.13.el: Renamed from x-symbol-svo13.el.
+	(x-symbol-window-width): New function, XEmacs bug workaround,
+	moved from `x-symbol-grid'.
+
+	* x-symbol-site.el (string-match "XEmacs" emacs-version): Use new
+ 	file names.
+
+1996-11-07  Alastair Burt  <burt@dfki.uni-sb.de>
+
+	* x-symbol-xmas-19.13.el (x-symbol-window-width): Bug fix,
+	`font-instance-properties' does not exist in XEmacs-19.13.
+
+1996-09-20  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-add-hook): New function.
+	(minibuffer-setup-hook): Use it.
+	(pre-command-hook): Use it.
+	(post-command-hook): Use it.
+	(pre-abbrev-expand-hook): Use it.
+
+1996-09-16  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-create.el: Use make utility (reason: compilation takes
+ 	quite a long time).
+	(x-symbol-create-lex-pre): Deletia.
+	(x-symbol-create-cc-pre): Deletia.
+	(x-symbol-create-cc-post): Deletia.
+	(x-symbol-create-cc-src): Deletia.
+	(x-symbol-create-compilation-buffer): Deletia.
+	(x-symbol-create-compilation-mode): New configuration variable.
+	(x-symbol-create-compile-command): Ditto.
+	(x-symbol-create-makefile-name): Ditto.
+	(x-symbol-create-makefile-pre): Ditto.
+	(x-symbol-create-makefile-post): Ditto.
+	(x-symbol-create-exec-names): New internal variable.
+	(x-symbol-create-all-exec): No optional argument anymore.  Call
+ 	`x-symbol-init-tables' with new optional argument.  Various
+ 	changes.
+	(x-symbol-create-exec): Call `x-symbol-init-exec' with new
+ 	optional argument.  Various changes.
+
+	* x-symbol.el (x-symbol-init-tables): New optional argument used
+	by `x-symbol-create-all-exec'.
+	(x-symbol-init-exec): New optional argument used by
+	`x-symbol-create-exec'.
+	(x-symbol-using-grid-buffer): Deletia.
+	(x-symbol-grid-min-column): New configuration variable.
+	(x-symbol-rgb-buffer-size): New internal variable.
+	(x-symbol-rgb-calling-buffer): Ditto.
+	(x-symbol-rgb-selected-frame): Ditto.
+	(x-symbol-rgb-window-configuration): Ditto.
+	(x-symbol-shrink-grid-buffer): New function.
+	(x-symbol-pre-replace-grid-buffer): Ditto.
+	(x-symbol-replace-grid-buffer): Ditto.
+	(x-symbol-grid): Use them.
+	(x-symbol-help): Ditto.
+	(x-symbol-self-insert-command): Ditto.
+	(x-symbol-pre-abbrev-expand-hook): Ditto.
+
+1996-09-12  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol-site.el: Use `autoload' feature now.
+	(x-symbol-site-init-keys): New function used in
+ 	`x-symbol-load-hook'.
+	(x-symbol-site-init-bib-cite): Ditto.
+	(x-symbol-site-init-x-compose): Ditto.
+
+	* x-symbol.el: Initial comment section === Installation: === is
+ 	now much shorter--we use x-symbol-site for this.
+	(x-symbol-hooks): Require package x-symbol-hooks, since we moved
+ 	some code to it.
+	(x-symbol-help-window): Deletia => comment in x-symbol-site.el.
+	(x-symbol-beginning-of-buffer): Ditto.
+	(x-symbol-end-of-buffer): Ditto.
+	(x-symbol-scroll-down): Ditto.
+	(x-symbol-scroll-up): Ditto.
+	(x-symbol-temporary): New function used instead.
+	(x-symbol-temporary-set-key): New function to bind this function.
+	(button1): Binding moved to x-symbol-site.
+
+	* x-symbol-hooks.el: New file containing pre-loaded stuff for
+ 	package x-symbol which can be `autoload'ed now.
+	(x-symbol-load-hook): New configuration variable, includes
+	`x-symbol-init-font-lock'.
+	(x-symbol-auto-cvt): Moved from x-symbol.
+	(x-symbol-show-symbol): Ditto.
+	(x-symbol-font-lock-find-file-hook-function): Ditto.
+	(x-symbol-conversion): Ditto.
+	(x-symbol-fontify): Ditto.
+	(global-map): Binding of `x-symbol-grid' moved from x-symbol.
+	(x-symbol-find-file-hook): Moved from x-symbol.  Require x-symbol
+ 	when conversion takes place.
+	(x-symbol-write-file-data-hook): Ditto.
+	(x-symbol-write-file-hook): Ditto.
+	(x-symbol-key-autoload): Hack for `autoload'ing keymaps--the
+ 	standard way is useless.
+
+	* x-symbol-iso.el: Removed `fset's for names of the corresponding
+	functions in package iso-cvt => comment in x-symbol-site.
+
+1996-09-09  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-post-command-hook): Would bug out when
+ 	char before point is `x-symbol-esc-char' and first entry in
+ 	`buffer-undo-list' is a string not matching
+ 	`x-symbol-char-regexp' (this is very rare).
+
+	(x-symbol-init-tables): Keep KEY-MNEMO (only a problem in v2.2c).
+	(x-symbol-init-tables): Always show big box for unused encodings
+ 	in `x-symbol-font'.
+	(x-symbol-call-2tex): State assumption for
+ 	`x-symbol-sym2tex-alist'.
+	(x-symbol-init-tables): Make sure this assumption holds.  (This
+ 	was only a problem in v2.2c.)
+	
+	(x-symbol-menu-start): Additional submenu for global options
+ 	introduced with v2.2b and v2.2c.
+	(x-symbol-font): Automatic initialization with `try-font-name'.
+	(x-symbol-sup-font): Ditto.
+	(x-symbol-sub-font): Ditto.
+	(x-symbol-norm-sup-font): Ditto.
+	(x-symbol-norm-sub-font): Ditto.
+	(x-symbol-init-font-lock): New function used at startup.
+	(x-symbol-highlight-menu): Don't use hard-coded fallback.
+
+1996-09-05  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-extended-charset-p): New configuration
+	variable, automatically initialized.
+	(x-symbol-default-table): Includes encoding for new XSymbol font,
+ 	includes TeX math classes.  Drop submenu "Math and Text"--we can
+ 	provide a list of key bindings.  Changed key bindings for x-symbol
+ 	characters in Text mode.
+	(x-symbol-init-tables): Use them, i.e. handle negative integers,
+ 	list of key definitions and TeX math classes.
+	(x-symbol-init-character): Use them, i.e. first argument is now a
+ 	list of key definitions with key-mnemo, second argument is now the
+ 	list of TeX math classes.
+	(x-symbol-grid): Take bug (?) of `window-width' into account: use
+ 	`window-pixel-width' and associates instead.
+
+	(x-symbol-key-submenu-alist): Renamed from
+	`x-symbol-menu-struct'.  Changed submenu heading--dropped section
+	Math and Text.
+	(x-symbol-show-info): New user option.
+	(x-symbol-idle-delay): New user option.
+	(x-symbol-info-heading-format): New configuration variable.
+	(x-symbol-info-mouse-format): New configuration variable.
+	(x-symbol-info-point-format): New configuration variable.
+	(x-symbol-ascii-class-alist): New configuration variable.
+	(x-symbol-class-string-alist): New configuration variable.
+	(x-symbol-key-classes-alist): New variable.
+	(x-symbol-classes-to-string): New function.
+	(x-symbol-display-info): New function.
+	(x-symbol-grid-highlight): Use them.
+	(x-symbol-class-insert): Ditto.
+	(x-symbol-class-insert): Ditto.
+	(x-symbol-post-command-hook): Use them, i.e. display info in echo
+	area (`x-symbol-display-info') eventually.
+
+1996-08-29  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-font-lock-keywords): Renamed, before v1.3,
+ 	`x-symbol-font-lock-keyword' contained just one element for
+ 	`font-lock-keywords', improved.
+	(x-symbol-font-lock-keywords-variables): New configuration
+ 	variable for packages which set their own font-lock-keywords, e.g,
+ 	font-latex.
+	(x-symbol-shrink-grid-buffer): New user option.
+	(x-symbol-replace-grid-buffer): New user option.
+	(x-symbol-using-grid-buffer): New internal variable.
+	(x-symbol-self-insert-command): Use them.
+	(x-symbol-help): Ditto.
+	(x-symbol-grid): Ditto.
+
+1996-08-13  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-init-character): Don't try to create menu
+ 	entry with KEYS=nil.
+	(x-symbol-help): Take bug (?) of `this-command-keys' into account:
+ 	if the previous command was `undefined', its key sequence is also
+ 	returned by `this-command-keys' :-(
+	(x-symbol-fake-keymap): Forget previous command keys.
+	(x-symbol-defalias-key): Be more strict when binding
+	`x-symbol-fake-keymap'. 
+	(x-symbol-highlight-menu): Popping up the mode menu only selects
+ 	the window, it does not set the point anymore.
+	(x-symbol-highlight-menu): Do not show buffer name.
+	(x-symbol-grid): Would signal a read-only error if buffer
+ 	`x-symbol-grid-buffer' exists and is read-only; this is probably
+	the case when using XEmacs-19.14.
+
+1996-06-26  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-help-tab-width): New user option.
+	(x-symbol-help-mapper): Use it.
+	(x-symbol-help): Use it.  Set `indent-tabs-mode' to t.  (Did that
+	before but lost it.)
+	(x-symbol-init-exec): Warn, if `x-symbol-exec-directory' is set
+	but no executables are created.
+	('button1): Set to `mouse-track' in (sub-maps of) `x-symbol-map'.
+	(x-symbol-highlight-menu): Use default functions for button2 and
+	button3 if not over hightlight instead of signalling an error.
+	(x-symbol-fake-keymap): New function which allows to press
+	Sh-multi_key (or user defined aliases) after Sh-multi_key (+Help).
+	(x-symbol-defalias-key): Use it.
+
+1996-06-25  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-options-menu-saved-forms): Deletia.  New
+	file x-symbol-svo13.el fixes the bug of
+	`save-options-menu-settings' in XEmacs-19.13.  Similar file
+	x-symbol-svo14.el exists for XEmacs-19.14.
+	(x-symbol-font-lock-find-file-hook-function): New variable.
+	Package font-lock changed the name of the function in
+	`find-file-hooks'.
+	(x-symbol-conversion): Use it.
+
+	* x-symbol-svo13.el (options-menu-saved-forms): New file--bug fix for
+	`save-options-menu-settings' in XEmacs-19.13.
+
+	* x-symbol-svo14.el (options-menu-saved-forms): New file--bug fix for
+	`save-options-menu-settings' in XEmacs-19.14.
+
+	* x-symbol-site.el: New file--sample entries for ~/.emacs.
+
+1996-06-07  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-class-insert): New function.  Insert
+	x-symbol character class heading with hightlight property.
+	(x-symbol-grid): Use it.
+	(x-symbol-help-mapper): Use it.
+	(x-symbol-highlight-menu): Define button3 on character class
+	headings to pop up the correspinding part of `x-symbol-menu'.
+
+1996-06-05  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-grid-highlight): Use extent property
+	`help-echo' to show the corresponding TeX macro.
+
+1996-05-28  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-init-menu-end): Menu entry for grid.
+
+1996-05-23  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-show-symbol): Changed docstring.  Iso
+	characters are treated like x-symbol characters according to user
+	option `x-symbol-show-symbol' (the special treatment had
+	historical reasons: before version 2.1 you could not `isearch' for
+	x-symbol characters).
+	(x-symbol-default-table): Ditto.
+	(x-symbol-init-character): Enhanced for iso characters.
+	(x-symbol-init-tables): Also define commands for iso characters.
+	(x-symbol-help-mapper): Easier handling of iso characters.
+
+	(x-symbol-grid): New command on M-Sh-multi_key.  Display a grid
+	containing all x-symbol characters defined in the tables, you can
+	insert a character by pressing button2 or button3 over it (using
+	highlight), this workes also in the buffer created by pressing
+	Help during a x-symbol key sequence.  See user options
+	`x-symbol-grid-tab-width' and `x-symbol-grid-nl-p'.
+	(x-symbol-highlight-map): New variable.
+	(x-symbol-highlight-insert): New command on button2.
+	(x-symbol-highlight-menu): New command on button3.
+
+	(x-symbol-help-mapper): Fancy display when pressing Help during a
+	x-symbol key sequence.  See `x-symbol-norm-font',
+	`x-symbol-heading-face', `x-symbol-comment-face'.
+
+	(x-symbol-grid-buffer): New variable.  Used for grid and help
+	instead of hard-coded "*Help*".
+	(x-symbol-grid-highlight): New function.
+	(x-symbol-help): Use them.
+
+	(x-symbol-grid-nl-p): New variable used by `x-symbol-grid'.
+	(x-symbol-grid-tab-width): Ditto.
+	(x-symbol-heading-face): Ditto.
+	(x-symbol-comment-face): Ditto.
+	(x-symbol-norm-font): Ditto.
+
+	(x-symbol-init-tables): Special display for x-symbol characters
+	begins at code 32 instead of code 0.
+
+1996-05-17  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-fontify): Always turn on font-lock-mode.
+	`vc-next-action' switched off `font-lock-mode' once.  You only use
+	this function interactively, if `font-lock-mode' should be turned
+	on anyway.
+	(x-symbol-convert-interactive): Now check here for `font-lock-mode'.
+	(x-symbol-write-file-hook): Ditto.
+
+1996-05-09  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-after-conversion-hook): New variable.
+        Useful if a package (e.g. bib-cite) highlights special parts of
+        the buffer in a mode hook (which are run before
+        `find-file-hooks').
+	(x-symbol-conversion-action): New variable.
+	(x-symbol-conversion-type): New variable.
+	(x-symbol-all-tex2): Use them.
+	(x-symbol-all-2tex): Ditto.
+	(x-symbol-convert-interactive): Ditto.
+	(x-symbol-convert-tex2): Ditto.
+	(x-symbol-convert-2tex): Ditto.
+	(x-symbol-find-file-hook): Ditto.
+	(x-symbol-write-file-hook): Ditto.
+
+1996-05-03  Christoph Wedler  <wedler@fmi.uni-passau.de>
+
+	* x-symbol.el (x-symbol-init-tables): Set syntax of
+        `x-symbol-esc-char' to `character quote'.
+
+	(x-symbol-setup-alist): New variable.  Better setup for
+	latex-mode.
+	(x-symbol-setup-latex): Use it.
+
+1996-05-03  Vladimir Alexiev  <vladimir@cs.ualberta.ca>
+
+	* x-symbol.el (x-symbol-pre-abbrev-expand-hook): Bug fix.  After a
+	TeX symbol is replaced with the corresponding x-symbol character,
+	the second internal character would be further replaced by an
+	expansion, if this character is defined as an one-letter
+	abbreviation.  This function now stops `expand-abbrev' if it does
+	the expansion itself and does not call `expand-abbrev' in the
+	other case anymore.

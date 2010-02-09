@@ -1,0 +1,19 @@
+(toolbar-fancy
+  (standards-version 1.1
+   version VERSION
+   author-version AUTHOR_VERSION
+   date DATE
+   build-date BUILD_DATE
+   maintainer MAINTAINER
+   distribution stable
+   priority medium
+   category CATEGORY
+   dump nil
+   description "Semi WYSIWYG for LaTeX, HTML and other \"token languages\"."
+   filename FILENAME
+   md5sum MD5SUM
+   size SIZE
+   provides (x-symbol)
+   requires (REQUIRES)
+   type regular
+))
